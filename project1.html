@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Project Chipsee</title>
+		<meta name="description" content="Fullscreen Layout with Page Transitions" />
+		<meta name="keywords" content="fullscreen layout, boxes, responsive, page transitions, css transitions, jquery, portfolio, template" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	</head>
+    <style>
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot');
+	src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon.woff') format('woff'),
+		url('../fonts/icomoon.ttf') format('truetype'),
+		url('../fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    color: #f2ede3;
+    background: #333;
+    font-size: 0.9em;
+    font-weight: 300;
+}
+        
+li{
+	margin: 0;
+	padding: 5px;
+	width: 100%;
+	font-size: .9em;
+	letter-spacing: 2px;
+	font-weight: 700;
+	text-transform: uppercase;
+        }
+
+a {
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 700;
+	letter-spacing: 2px;
+	padding: 0 5px;
+	text-transform: uppercase;
+	font-size: 80%;
+}
+bold {
+    color: #f2ede3;
+	text-decoration: none;
+	font-weight: 700;
+/*
+	letter-spacing: 2px;
+	padding: 0 5px;
+	text-transform: uppercase;
+*/
+}
+
+a:hover {
+	color: #fff;
+}
+
+.container { height: 100%; width: 100%;}
+
+.bl-main {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.bl-main > section {
+	position: absolute;
+	width: 20%;
+	height: 100%;
+}
+
+.bl-main > section:first-child {
+	top: 0;
+	left: 0;
+	background: #1b1a63;
+}
+
+.bl-main > section:nth-child(2) {
+	top: 0;
+	left: 20%;
+	background: #292863;
+}
+
+.bl-main > section:nth-child(3) {
+	top: 0;
+	left: 40%;
+	background: #34335c;
+}
+
+.bl-main > section:nth-child(4) {
+	top: 0%;
+	left: 60%;
+	background: #3b3b54;
+}
+
+.bl-main > section:nth-child(5) {
+	top: 0%;
+	left: 80%;
+	background: #41414f;
+}
+
+.bl-main > section:nth-child(6) {
+	top: 0%;
+	left: 100%;
+	background: #10A296;
+}
+
+.bl-main > section:nth-child(7) {
+	top: 0%;
+	left: 120%;
+	background: #10A296;
+}
+.bl-box-title {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	opacity: 1;
+	/* Centering with flexbox */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+.bl-box {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	opacity: 1;
+	/* Centering with flexbox */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+        
+
+
+.bl-box h2 {
+	text-align: center;
+	margin: 0;
+	padding: 20px;
+	width: 100%;
+	font-size: 1.8em;
+	letter-spacing: 2px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+        
+        
+.bl-box-title h2 {
+	text-align: center;
+	margin: 0;
+	padding: 20px;
+	width: 100%;
+	font-size: 1.8em;
+	letter-spacing: 2px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+        
+.bl-icon {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	cursor: pointer;
+	-webkit-font-smoothing: antialiased;
+}
+
+.bl-icon:before {
+	display: block;
+	font-size: 2em;
+	margin-bottom: 10px;
+}
+
+.bl-icon-about:before {
+	content: "\e000";
+}
+
+.bl-icon-works:before {
+	content: "\e001";
+}
+
+.bl-icon-blog:before {
+	content: "\e002";
+}
+
+.bl-icon-contact:before {
+	content: "\e003";
+}
+
+.bl-main > section .bl-icon-close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.bl-icon-close:before {
+	content: "\e005";
+}
+
+.bl-content, 
+div.bl-panel-items > div > div {
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 60px;
+	left: 30px;
+	right: 30px;
+	bottom: 30px;
+	padding: 0 20px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+/* Custom content */
+
+.bl-content p {
+	margin: 0 auto;
+	padding-bottom: 15px;
+	font-size: 1.7em;
+	line-height: 1.8;
+}
+
+.bl-content h2 {
+	font-size: 3em;
+	font-weight: 300;
+	margin: 0 0 20px 0;
+}
+
+.bl-content article {
+	padding: 20px 40px 20px 0px;
+}
+
+.bl-content article h3 {
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	margin: 0 0 10px 0;
+	padding-top: 20px;
+	font-size: 1.4em;
+}
+
+.bl-content article a {
+	color: rgba(0,0,0,0.2);
+}
+
+.bl-content > ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+} 
+
+.bl-content > ul li {
+	display: inline-block;
+	width: 20%;
+	margin: 1%;
+}
+
+.bl-content > ul li a {
+	display: block;
+	padding: 0;
+	border: 8px solid rgba(0,0,0,0.1);
+}
+
+.bl-content > ul li a img {
+	display: block;
+	max-width: 100%;
+}
+
+/* Panel Items */
+
+div.bl-panel-items,
+div.bl-panel-items > div {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+}
+
+div.bl-panel-items > div > div {
+	width: 60%;
+	margin: 0 auto;
+	opacity: 1;
+	bottom: 90px;
+	top: 90px;
+	pointer-events: auto;
+}
+
+div.bl-panel-items > div > div h3 {
+	font-size: 2.4em;
+	font-weight: 300;
+	margin: 0 0 20px 0;
+}
+
+div.bl-panel-items > div > div p {
+	font-size: 1.3em;
+}
+
+div.bl-panel-items > div > div img {
+	float: left;
+	margin: 0 20px 20px 0;
+	max-width: 100%;
+}
+
+div.bl-panel-items {
+	top: 100%;
+	z-index: 9999;
+}
+
+div.bl-panel-items > div {
+	background: #3ba5db;
+	z-index: 0;
+	opacity: 0;
+	-webkit-transform: translateY(0);
+	-webkit-transition: -webkit-transform 0.5s ease-in-out, opacity 0s linear 0.5s;
+	-moz-transform: translateY(0);
+	-moz-transition: -moz-transform 0.5s ease-in-out, opacity 0s linear 0.5s;
+	transform: translateY(0);
+	transition: transform 0.5s ease-in-out, opacity 0s linear 0.5s;
+	-ms-transform: translateY(0);
+}
+
+div.bl-panel-items nav {
+	position: absolute;
+	z-index: 9999;
+	width: 216px;
+	left: 50%;
+	top: 0px;
+	margin-left: -108px;
+	opacity: 0;
+	-webkit-transition: opacity 0.2s ease-in-out 0.5s;
+	-moz-transition: opacity 0.2s ease-in-out 0.5s;
+	transition: opacity 0.2s ease-in-out 0.5s;
+}
+
+div.bl-panel-items.bl-panel-items-show nav span {
+	float: left;
+	margin: 5px;
+}
+
+div.bl-panel-items nav span.bl-next-work {
+	font-weight: 700;
+	letter-spacing: 2px;
+	display: block;
+	text-transform: uppercase;
+	line-height: 2em;
+	cursor: pointer;
+	margin-right: 2em;
+}
+
+div.bl-panel-items.bl-panel-items-show nav {
+	opacity: 1;
+	top: -70px;
+}
+
+div.bl-panel-items > div.bl-show-work {
+	z-index: 1000;
+	opacity: 1;
+	-webkit-transform: translateY(-100%);
+	-webkit-transition: -webkit-transform 0.5s ease-in-out;
+	-moz-transform: translateY(-100%);
+	-moz-transition: -moz-transform 0.5s ease-in-out;
+	transform: translateY(-100%);
+	transition: transform 0.5s ease-in-out;
+	-ms-transform: translateY(-100%);
+}
+
+div.bl-panel-items > div.bl-hide-current-work {
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-webkit-transform: translateY(-100%) scale(0.5);
+	-moz-transition: -moz-transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-moz-transform: translateY(-100%) scale(0.5);
+	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	transform: translateY(-100%) scale(0.5);
+	-ms-transform: translateY(-100%) scale(0.5);
+	z-index: 0;
+}
+
+/* Transition classes and properties */
+/* Separated for a better overview and control */
+
+.bl-main > section {
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.bl-main > section.bl-expand {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.bl-main > section.bl-expand-top {
+	z-index: 100;
+}
+
+.bl-main > section:first-child.bl-expand {
+	background: #1a1963;
+}
+.bl-main > section:nth-child(2).bl-expand {
+	background: #292866;
+}
+.bl-main > section:nth-child(3).bl-expand {
+	background: #343463;
+}
+.bl-main > section:nth-child(4).bl-expand {
+	background: #444366;
+}
+
+.bl-main.bl-expand-item > section:not(.bl-expand),
+.bl-main.bl-expand-item > section.bl-scale-down {
+	-webkit-transform: scale(0.5);
+	-moz-transform: scale(0.5);
+	-ms-transform: scale(0.5);
+	transform: scale(0.5);
+	opacity: 0;
+}
+
+.bl-box {
+	-webkit-transition: opacity 0.2s linear 0.5s;
+	-moz-transition: opacity 0.2s linear 0.5s;
+	transition: opacity 0.2s linear 0.5s;
+}
+.bl-box-title {
+	-webkit-transition: opacity 0.2s linear 0.5s;
+	-moz-transition: opacity 0.2s linear 0.5s;
+	transition: opacity 0.2s linear 0.5s;
+}
+
+section.bl-expand .bl-box {
+	opacity: 0;
+	-webkit-transition: opacity 0s linear;
+	-moz-transition: opacity 0s linear;
+	transition: opacity 0s linear;
+}
+
+.bl-box h2 {
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.no-touch section:not(.bl-expand) .bl-box:hover h2 {
+	-webkit-transform: translateY(-15px);
+	-moz-transform: translateY(-15px);
+	-ms-transform: translateY(-15px);
+	transform: translateY(-15px);
+}
+
+.bl-content,
+.bl-icon-close {
+	-webkit-transition: opacity 0.1s linear 0s;
+	-moz-transition: opacity 0.1s linear 0s;
+	transition: opacity 0.1s linear 0s;
+}
+
+section.bl-expand .bl-content,
+section.bl-expand .bl-icon-close {
+	pointer-events: auto;
+	opacity: 1;
+	-webkit-transition: opacity 0.3s linear 0.5s;
+	-moz-transition: opacity 0.3s linear 0.5s;
+	transition: opacity 0.3s linear 0.5s;
+}
+
+@media screen and (max-width: 46.5em) {
+	.bl-content,
+	.bl-box {
+		font-size: 75%;
+	}
+    .bl-box-title {
+		font-size: 75%;
+	}
+
+	.bl-expand .bl-box {
+		height: 130px;
+	}
+
+	.bl-content > ul li {
+		width: 40%;
+	}
+}
+.box {
+  background-image: url("16bit_dim.jpeg");
+  animation: spotlight 20s;
+  animation-iteration-count: infinite;
+}
+.dot1{
+  animation: circle 2s infinite;
+  background: red;
+  height: 8px;
+  width: 8px;
+position: absolute
+    }
+
+@keyframes circle {
+  0% { clip-path: inset(0% 0% 0% 0% round 0%); }
+  100% { clip-path: inset(0% 0% 0% 0% round 100%);}
+}
+@keyframes spotlight {
+  0% { clip-path: inset(20% 20% 20% 20% round 0%); }
+  20% { clip-path: inset(41% 47% 43% 45% round 0%); }
+  40% { clip-path: inset(68% 56% 15% 36% round 0%);}
+  60% { clip-path: inset(8% 33% 74% 58% round 0%); }
+  80% { clip-path: inset(21% 49% 63% 43% round 0%); }
+  100% { clip-path: inset(76% 52% 8% 40% round 0%); }
+}
+        
+        
+.flip-card {
+  background-color: transparent;
+  width: 330px;
+  height: 330px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  display: block;
+  background-color: #123661;
+  color: white;
+}
+
+.flip-card-back {
+  display: block;
+  font-size: 10px;
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+div2{
+        position: center;
+        display:flex;
+        margin-right: 50px;
+        margin-right: 50px;
+    }
+.div3{ 
+    
+    background-image: url("screenshots/16bit_dim.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+        }
+
+</style>
+	<body>
+		<div class="container">	
+			<div id="bl-main" class="bl-main">
+				<section>
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-about">Intro</h2>
+					</div>
+           			<div class="bl-content">
+						<h2>Introduction</h2>
+						<p>
+                            Image classification is used on overhead imagery to detect specific objects such as planes, cars and buildings. Creating and training effective deep learning image classification models is dependent on the proper tuning of model hyper-parameters, along with appropriate image preprocessing and standardization. </p>
+                        <article>
+							<h3>Big Questions</h3>
+							<ol>
+                                <p>What is the difference in model performance between models trained on 16-bit images and models trained on images converted to 8-bit?</p>
+                                <p>How should images pixel values be standardized?</p>
+                                <p>Should standardization be based on only a collection of local or global pixel intensities?</p>
+                            </ol>
+						</article>
+						<article>
+							<h3>16 bit vs 8 bit Imagery</h3>
+                            <p>Within an image, digital information is stored in pixels as intensities or tones. An 8-bit image can hold 256 different intensities within a single image channel; a standard color image has 3 channels - red, green and blue (RGB). Thus, each pixel in a standard RGB image consumes 24 bits of information. In all, <bold>RGB 8 bit</bold> images can hold up to <bold>16.7 Million</bold> different values. <bold>16 Bit images</bold>, on the other hand can hold 65,536 pixel intensities in a single channel, resulting in <bold>28 Billion</bold> possible values. This is a significant difference, several orders of magnitude larger, and has implications in how this data is processed.</p>
+                            
+                                <div><img src="screenshots/16bit.jpeg" width="500" height="400" align='center' /><img src="screenshots/8bit.jpg" width="500" height="400" id= '8img' align= 'center
+                                    ' /></div>
+						</article>
+						<article>
+							<h3>Challenges</h3>
+							<p>In addition to being 16-bit, satellite imagery is huge, generally on the order of tens of thousands of pixels in width and height. All images used in this blogpost are derived from the <a href="https://www.cosmiqworks.org/rareplanes/">Rareplanes Dataset</a> which includes panchromatic (single channel) imagery of different airports with over ten thousand labeled planes. To train an image classification model, we needed to "chip" the full images into smaller tiles that could then be converted and standardized to be fed into a model.</p>
+						</article>
+						<p>
+							<a href="file:///home/ssamuel/FullscreenLayoutPageTransitions-master/project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a><strong>Home Page</strong></a>
+						</p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<section id="bl-work-section">
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-works">Data Preparation</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Data Preparation</h2>
+            
+                        <p><a>Data Generation: The Chipping Process</a>
+                            <p>Using the metadata associated with each satellite image, we located the centroid of each labeled plane within each image. We then used those coordinates to create 512 x 512 chips around each plane using gdal to create our "positive" chips. "Negative" chip generation conversely used those coordinates to exclude planes entirely and only chip non-plane areas. In generating the negative chips, it is important to include as wide a variety of non-plane data as possible, to help reduce the number of false positive detections of the model. We generated one thousand 512 x 512 negative chips per positive chip.</p>
+                        <div class='div3' align= 'center'>
+                            <div class = 'box' align='center'>
+                            <img src="screenshots/16bit.jpeg" />
+                        </div>
+                        </div>
+                        <p>We trained an airplane detector on the Rareplanes dataset using five different image standardization methods, two using 16-bit imagery, and three using 16-bit converted to 8-bit imagery. The following cards display the normalization methods used for each case. </p>
+                        <article>
+                        <h3>Cases</h3>
+                        <h4>Hover over the image below to see standarization methods:</h4>
+                        </article>
+                        <div2>
+                            <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 1</h1>
+                                  <img src="screenshots/case1_plane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>16 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 1</h1> 
+                                  <p> Normalized on 16 bit Maximum (65536)</p> 
+                                  <p> \[x_{\text{ chip}} = {x_{\text{ chip }} \over 65536}\]</p>
+                                </div>
+                              </div>
+                            </div>
+
+                                <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 2</h1>
+                                  <img src="screenshots/case2_plane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>16 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 2</h1> 
+                                  <p> Normalized on 16 bit Intra-chip Maximum </p> 
+                                  <p> \[x_{\text{ chip}} = {x_{\text{ chip }} \over max(\text{Chip})}\]</p>
+                                </div>
+                              </div>
+                            </div>
+
+                                <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 3</h1>
+                                  <img src="screenshots/case3_plane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>8 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 3</h1> 
+                                  <p> Normalized on 8 bit Intra-chip Maximum </p> 
+                                  <p> \[x_{\text{ chip}} = {x_{\text{ chip }.astype(uint(8))} \over max(\text{Chip})}\]</p>
+                                </div>
+                              </div>
+                            </div>
+
+                                <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 4</h1>
+                                  <img src="screenshots/case4_plane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>8 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 4</h1> 
+                                  <p> Normalized on 8 bit Chip Minimum and Maximum </p> 
+                                  <p> \[{x_{\text{Chip}} = {{x_{\text{Chip}}- min(Chip) \over max(Chip)- min(Chip)}   \over max(\text{Chip})}}\]</p>
+                                </div>
+                              </div>
+                            </div>
+
+                                <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 5</h1>
+                                  <img src="screenshots/case5_noplane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>8 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 5</h1> 
+                                  <p> Normalized on 8 bit Maximum (256) </p> 
+                                  <p> \[x_{\text{ chip}} = {{{x_{\text{ chip }} \over 256}.astype(uint8) \over 256}}\]</p>
+                                </div>
+                              </div>
+                            </div>
+                        </div2>
+                        
+                        
+                        
+                        <p>
+							<a href="file:///home/ssamuel/FullscreenLayoutPageTransitions-master/project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a><strong>Home Page</strong></a>
+						</p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+
+				</section>
+				<section>
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-blog">Model</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Model</h2>
+                        <p>We trained an airplane detector on the Rareplanes dataset using five different image standardization methods, two using 16-bit imagery, and three using 16-bit converted to 8-bit imagery. The following cards display the normalization methods used for each case. </p>
+                        <article>
+                        <h3>Training</h3>
+                            <p>The model utilized a <a href='https://arxiv.org/pdf/1512.03385.pdf'>ResNet50</a> Architecture modified to accept single color imagery as input. The dataset included 187 total satellite images which were used to generate 10901 positive chips and 180000 negative chips, all of 256*256 dimensions. Each case was then trained from scratch for 60 iterations with a 70/30 train/val random split created for robust training. Every case has the same train and val set. However, different data augmentation functions such as horizontal and vertical shifts, horizontal and vertical flips, random rotations, blurs, and crops were randomly applied throughout.</p> 
+                        </article>
+                        
+                        <article>
+                        <h3>Validation</h3>
+                            <p>In this step we performed an Initial evaluation of the model on validation data. This analysis determined the appropriate threshold a predicted probability must exceed in order to be classified as a positive. The goal was to minimize the number of false positive and false negative predictions. We use the metrics below to inform which thresholds were selected for each model.</p>
+                            
+                            <ul>
+                                <p><li>True Positives</li></p>
+                                <p><li>False Positives</li></p>
+                                <p><li>True Negatives</li></p>
+                                <p><li>False Negatives</li></p>
+                                <p><li>Accuracy: True Positives plus True Negatives, divided by the Total Chips</li></p>
+                                <p><li>True Positive Rate:  Percent of True Positives given a threshold.</li></p>
+                                <p><li>False Positive Rate: Percent of False Positives given the threshold. This was one of the most important metrics in determining the appropriate threshold. This often was comes at the expense of FN.</li></p>
+                                <p><li>False Negative Rate: Percent of false negative given the threshold.</li></p>
+                                <p><li>"Augmented" False Positives: This curated metric took the the number of FPs produced from the validation set and linearly scaled that number to represent how many FPs we would expect if we were to insert a full image worth of chips into the model. Given every image is on average 65,000 x 65,000 pixels, with batch sizes of 50 or more images, there would be 85 times the size of the validation set worth of chips being processed through the model on average. Therefore, the Augmented FPs scales the number of FPs by a factor of 85.</li></p>
+                            </ul>
+                    
+                            
+                        <p>In all five cases, the central deciding factor in threshold selection was the Augmented FP. At lower thresholds accuracy, TP rate and FN rate all do well. At thresholds close to 0, nearly all probabilities are classified as positive. Therefore the number of FN also decreases. Alternatively, FPs increase drastically by lowering the threshold. Therefore, thresholds were set at the lowest probability where the Augmented FP was less than 100.  This both satisfies a low expected FP count while optimizing accuracy, TPR and FNR. One hundred is a number that can easily be modified by a client based on individual tolerance, but for the purposes of these experiments we used it.</p>
+                            
+                        </article>
+                        
+                        
+                        <article>
+                        <h3>Cases</h3>
+                        <h4>Hover over the image below to see standarization methods:</h4>
+                        </article>
+                        <div2 align = 'center'>
+                            <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 1</h1>
+                                  <img src="screenshots/case1_plane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>16 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 1</h1> 
+                                  <p> Normalized on 16 bit Maximum (65536)</p> 
+                                  <p> \[x_{\text{ chip}} = {x_{\text{ chip }} \over 65536}\]</p>
+                                </div>
+                              </div>
+                            </div>
+
+                                <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 2</h1>
+                                  <img src="screenshots/case2_plane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>16 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 2</h1> 
+                                  <p> Normalized on 16 bit Intra-chip Maximum </p> 
+                                  <p> \[x_{\text{ chip}} = {x_{\text{ chip }} \over max(\text{Chip})}\]</p>
+                                </div>
+                              </div>
+                            </div>
+
+                                <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 3</h1>
+                                  <img src="screenshots/case3_plane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>8 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 3</h1> 
+                                  <p> Normalized on 8 bit Intra-chip Maximum </p> 
+                                  <p> \[x_{\text{ chip}} = {x_{\text{ chip }.astype(uint(8))} \over max(\text{Chip})}\]</p>
+                                </div>
+                              </div>
+                            </div>
+
+                                <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 4</h1>
+                                  <img src="screenshots/case4_plane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>8 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 4</h1> 
+                                  <p> Normalized on 8 bit Chip Minimum and Maximum </p> 
+                                  <p> \[{x_{\text{Chip}} = {{x_{\text{Chip}}- min(Chip) \over max(Chip)- min(Chip)}   \over max(\text{Chip})}}\]</p>
+                                </div>
+                              </div>
+                            </div>
+
+                                <div class="flip-card" align= 'center'>
+                              <div class="flip-card-inner" align= 'center'>
+                                <div class="flip-card-front" align= 'center'>
+                                    <h1>Case 5</h1>
+                                  <img src="screenshots/case5_noplane.jpg" alt="Avatar" style="width:200px;height:200px;">
+                                    <h1>8 bit</h1>
+                                </div>
+                                <div class="flip-card-back">
+                                  <h1>Case 5</h1> 
+                                  <p> Normalized on 8 bit Maximum (256) </p> 
+                                  <p> \[x_{\text{ chip}} = {{{x_{\text{ chip }} \over 256}.astype(uint8) \over 256}}\]</p>
+                                </div>
+                              </div>
+                            </div>
+                        </div2>
+						<article>
+                            <h3>Demo</h3>
+                                insert Demo Here!
+                        </article>
+                        
+                        <p>
+							<a href="file:///home/ssamuel/FullscreenLayoutPageTransitions-master/project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="#"><strong>Home Page</strong></a>
+						</p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+
+				</section>
+				<section>
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-contact">Results</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Get in touch</h2>
+						<p>Pinterest semiotics single-origin coffee craft beer thundercats irony, tumblr bushwick intelligentsia pickled. Narwhal mustache godard master cleanse street art, occupy ugh selfies put a bird on it cray salvia four loko gluten-free shoreditch. Occupy american apparel freegan cliche. Mustache trust fund 8-bit jean shorts mumblecore thundercats. Pour-over small batch forage cray, banjo post-ironic flannel keffiyeh cred ethnic semiotics next level tousled fashion axe. Sustainable cardigan keytar fap bushwick bespoke.</p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+                <section>
+					<div class="bl-box-title">
+						<h2 class="bl-icon">Project Chipsee</h2>
+                    </div>
+                    <div class="bl-content">
+						<h2></h2>
+						<p> </p>
+						<p>
+							<a href="file:///home/ssamuel/FullscreenLayoutPageTransitions-master/project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="#"><strong>Home Page</strong></a>
+						</p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+                </section>
+				
+				<!-- Panel items for the works -->
+				<div class="bl-panel-items" id="bl-panel-work-items">
+					<div data-panel="panel-1">
+						<div>
+							<img src="images/1.jpg" />
+							<h3>Fixie bespoke</h3>
+							<p>Iphone artisan direct trade ethical Austin. Fixie bespoke banh mi ugh, deep v vinyl hashtag. Tumblr gentrify keffiyeh pop-up iphone twee biodiesel. Occupy american apparel freegan cliche. Mustache trust fund 8-bit jean shorts mumblecore thundercats. Pour-over small batch forage cray, banjo post-ironic flannel keffiyeh cred ethnic semiotics next level tousled fashion axe. Sustainable cardigan keytar fap bushwick bespoke.</p>
+						</div>
+					</div>
+					<div data-panel="panel-2">
+						<div>
+							<img src="images/2.jpg" />
+							<h3>Chillwave mustache</h3>
+							<p>Squid vinyl scenester literally pug, hashtag tofu try-hard typewriter polaroid craft beer mlkshk cardigan photo booth PBR. Chillwave 90's gentrify american apparel carles disrupt. Pinterest semiotics single-origin coffee craft beer thundercats irony, tumblr bushwick intelligentsia pickled. Narwhal mustache godard master cleanse street art, occupy ugh selfies put a bird on it cray salvia four loko gluten-free shoreditch.</p>
+						</div>
+					</div>
+					<div data-panel="panel-3">
+						<div>
+							<img src="images/3.jpg" />
+							<h3>Austin hella</h3>
+							<p>Ethical cray wayfarers leggings vice, seitan banksy small batch ethnic master cleanse. Pug chillwave etsy, scenester meh occupy blue bottle tousled blog tonx pinterest selvage mixtape swag cosby sweater. Synth tousled direct trade, hella Austin craft beer ugh chambray.</p>
+						</div>
+					</div>
+					<div data-panel="panel-4">
+						<div>
+							<img src="images/4.jpg" />
+							<h3>Brooklyn dreamcatcher</h3>
+							<p>Fashion axe 90's pug fap. Blog wayfarers brooklyn dreamcatcher, bicycle rights retro YOLO. Wes anderson lomo 90's food truck 3 wolf moon, twee jean shorts. Iphone small batch twee wolf yr before they sold out. Brooklyn echo park cred, portland pug selvage flannel seitan tousled mcsweeney's.</p>
+						</div>
+					</div>
+					<nav>
+						<span class="bl-next-work">&gt; Next Project</span>
+						<span class="bl-icon bl-icon-close"></span>
+					</nav>
+				</div>
+			</div>
+		</div><!-- /container -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/boxlayout.js"></script>
+		<script>
+			$(function() {
+				Boxlayout.init();
+			});
+		</script>
+	</body>
+</html>
