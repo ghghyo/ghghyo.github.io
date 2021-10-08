@@ -1,0 +1,1068 @@
+
+<!DOCTYPE html>
+<html class="animate__animated animate__jackInTheBox animate__slow">
+<head>
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+	
+	<title>Project 3</title>
+	
+	<style>
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?whcb40');
+  src:  url('fonts/icomoon.eot?whcb40#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?whcb40') format('truetype'),
+    url('fonts/icomoon.woff?whcb40') format('woff'),
+    url('fonts/icomoon.svg?whcb40#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+body, html { font-size: 100%; padding: 0; margin: 0; height: 100%;}
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    color: #f2ede3;
+    background: #333;
+    font-size: 0.9em;
+    font-weight: 300;
+}
+
+a {
+	color: #f0f0f0;
+	text-decoration: none;
+	font-weight: 700;
+	letter-spacing: 2px;
+	padding: 0 5px;
+	text-transform: uppercase;
+	font-size: 80%;
+}
+
+a:hover {
+	color: #fff;
+}
+
+.container { height: 100%; }
+
+.bl-main {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.bl-main > section {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+}
+
+.bl-main > section:first-child {
+	top: 0;
+	left: 0;
+	background: #261C2C;
+}
+
+.bl-main > section:nth-child(2) {
+	top: 0;
+	left: 50%;
+	background: #3E2C41;
+}
+
+.bl-main > section:nth-child(3) {
+	top: 50%;
+	left: 0;
+	background: #5C527F;
+}
+
+.bl-main > section:nth-child(4) {
+	top: 50%;
+	left: 50%;
+	background: #6E85B2;
+}
+
+.bl-box {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	opacity: 1;
+	/* Centering with flexbox */
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.bl-box h2 {
+	text-align: center;
+	margin: 0;
+	padding: 20px;
+	width: 100%;
+	font-size: 1.8em;
+	letter-spacing: 2px;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.bl-icon {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	cursor: pointer;
+	-webkit-font-smoothing: antialiased;
+}
+
+.bl-icon:before {
+	display: block;
+	font-size: 2em;
+	margin-bottom: 10px;
+}
+
+.bl-icon-overview:before {
+	content: "\e9ce";
+}
+
+.bl-icon-model:before {
+	content: "\e991";
+}
+
+.bl-icon-results:before {
+	content: "\e99b";
+}
+
+.bl-icon-try:before {
+	content: "\ea15";
+}
+
+.bl-main > section .bl-icon-close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.bl-icon-close:before {
+	content: "\ea0f";
+}
+
+.bl-content, 
+div.bl-panel-items > div > div {
+	opacity: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 60px;
+	left: 30px;
+	right: 30px;
+	bottom: 30px;
+	padding: 0 20px;
+	overflow: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Custom content */
+
+.bl-content p {
+	margin: 0 auto;
+	padding-bottom: 15px;
+	font-size: 1.7em;
+	line-height: 1.8;
+}
+
+.bl-content h2 {
+	font-size: 3em;
+	font-weight: 300;
+	margin: 0 0 20px 0;
+}
+
+.bl-content article {
+	padding: 20px 40px 20px 0px;
+}
+
+.bl-content article h3 {
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	margin: 0 0 10px 0;
+	padding-top: 20px;
+	font-size: 1.4em;
+}
+
+.bl-content article a {
+	color: rgba(0,0,0,0.2);
+}
+
+.bl-content > ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+} 
+
+.bl-content > ul li {
+	display: inline-block;
+	width: 20%;
+	margin: 1%;
+}
+
+.bl-content > ul li a {
+	display: block;
+	padding: 0;
+	border: 8px solid rgba(0,0,0,0.1);
+}
+
+.bl-content > ul li a img {
+	display: block;
+	max-width: 100%;
+}
+
+/* Panel Items */
+
+div.bl-panel-items,
+div.bl-panel-items > div {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+}
+
+div.bl-panel-items > div > div {
+	width: 70%;
+	margin: 0 auto;
+	opacity: 1;
+	bottom: 90px;
+	top: 90px;
+	pointer-events: auto;
+}
+
+div.bl-panel-items > div > div h3 {
+	font-size: 2.4em;
+	font-weight: 300;
+	margin: 0 0 20px 0;
+}
+
+div.bl-panel-items > div > div p {
+	font-size: 1.3em;
+}
+
+div.bl-panel-items > div > div img {
+	float: left;
+	margin: 0 20px 20px 0;
+	max-width: 100%;
+}
+
+div.bl-panel-items {
+	top: 100%;
+	z-index: 9999;
+}
+
+div.bl-panel-items > div {
+	background: #3ba5db;
+	z-index: 0;
+	opacity: 0;
+	-webkit-transform: translateY(0);
+	-webkit-transition: -webkit-transform 0.5s ease-in-out, opacity 0s linear 0.5s;
+	-moz-transform: translateY(0);
+	-moz-transition: -moz-transform 0.5s ease-in-out, opacity 0s linear 0.5s;
+	transform: translateY(0);
+	transition: transform 0.5s ease-in-out, opacity 0s linear 0.5s;
+	-ms-transform: translateY(0);
+}
+
+div.bl-panel-items nav {
+	position: absolute;
+	z-index: 9999;
+	width: 216px;
+	left: 50%;
+	top: 0px;
+	margin-left: -108px;
+	opacity: 0;
+	-webkit-transition: opacity 0.2s ease-in-out 0.5s;
+	-moz-transition: opacity 0.2s ease-in-out 0.5s;
+	transition: opacity 0.2s ease-in-out 0.5s;
+}
+
+div.bl-panel-items.bl-panel-items-show nav span {
+	float: left;
+	margin: 5px;
+}
+
+div.bl-panel-items nav span.bl-next-work {
+	font-weight: 700;
+	letter-spacing: 2px;
+	display: block;
+	text-transform: uppercase;
+	line-height: 2em;
+	cursor: pointer;
+	margin-right: 2em;
+}
+
+div.bl-panel-items.bl-panel-items-show nav {
+	opacity: 1;
+	top: -70px;
+}
+
+div.bl-panel-items > div.bl-show-work {
+	z-index: 1000;
+	opacity: 1;
+	-webkit-transform: translateY(-100%);
+	-webkit-transition: -webkit-transform 0.5s ease-in-out;
+	-moz-transform: translateY(-100%);
+	-moz-transition: -moz-transform 0.5s ease-in-out;
+	transform: translateY(-100%);
+	transition: transform 0.5s ease-in-out;
+	-ms-transform: translateY(-100%);
+}
+
+div.bl-panel-items > div.bl-hide-current-work {
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-webkit-transform: translateY(-100%) scale(0.5);
+	-moz-transition: -moz-transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	-moz-transform: translateY(-100%) scale(0.5);
+	transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	transform: translateY(-100%) scale(0.5);
+	-ms-transform: translateY(-100%) scale(0.5);
+	z-index: 0;
+}
+
+/* Transition classes and properties */
+/* Separated for a better overview and control */
+
+.bl-main > section {
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.bl-main > section.bl-expand {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.bl-main > section.bl-expand-top {
+	z-index: 100;
+}
+
+.bl-main > section:first-child.bl-expand {
+	background: #2D2424;
+}
+.bl-main > section:nth-child(2).bl-expand {
+	background: #5C3D2E;
+}
+.bl-main > section:nth-child(3).bl-expand {
+	background: #B85C38;
+}
+.bl-main > section:nth-child(4).bl-expand {
+	background: #E0C097;
+}
+
+.bl-main.bl-expand-item > section:not(.bl-expand),
+.bl-main.bl-expand-item > section.bl-scale-down {
+	-webkit-transform: scale(0.5);
+	-moz-transform: scale(0.5);
+	-ms-transform: scale(0.5);
+	transform: scale(0.5);
+	opacity: 0;
+}
+
+.bl-box {
+	-webkit-transition: opacity 0.2s linear 0.5s;
+	-moz-transition: opacity 0.2s linear 0.5s;
+	transition: opacity 0.2s linear 0.5s;
+}
+
+section.bl-expand .bl-box {
+	opacity: 0;
+	-webkit-transition: opacity 0s linear;
+	-moz-transition: opacity 0s linear;
+	transition: opacity 0s linear;
+}
+
+.bl-box h2 {
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+.no-touch section:not(.bl-expand) .bl-box:hover h2 {
+	-webkit-transform: translateY(-15px);
+	-moz-transform: translateY(-15px);
+	-ms-transform: translateY(-15px);
+	transform: translateY(-15px);
+}
+
+.bl-content,
+.bl-icon-close {
+	-webkit-transition: opacity 0.1s linear 0s;
+	-moz-transition: opacity 0.1s linear 0s;
+	transition: opacity 0.1s linear 0s;
+}
+
+section.bl-expand .bl-content,
+section.bl-expand .bl-icon-close {
+	pointer-events: auto;
+	opacity: 1;
+	-webkit-transition: opacity 0.3s linear 0.5s;
+	-moz-transition: opacity 0.3s linear 0.5s;
+	transition: opacity 0.3s linear 0.5s;
+}
+	/* 
+	Generic Styling, for Desktops/Laptops 
+	*/
+	table { 
+		width: 100%; 
+		border-collapse: collapse; 
+	}
+
+	th { 
+		background: #333; 
+		color: white; 
+		font-weight: bold; 
+		cursor: alias;
+		background-repeat: no-repeat;
+        background-position: 3% center;
+	}
+	td, th { 
+		padding: 6px; 
+		border: 1px solid #ccc; 
+		text-align: left; 
+	}
+	
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -2px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 1px 0 0 1px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 0px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+	.results {
+        
+		text-align:center;
+		vertical-align: top;
+		font-size: 20px;
+		font-weight:bold;	
+		padding: 0px;
+		display: inline-block;
+	}
+.results img:hover {
+        transform: scale(1.2);
+		opacity: 1;
+
+	}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@media screen and (max-width: 46.5em) {
+	.bl-content,
+	.bl-box {
+		font-size: 75%;
+	}
+
+	.bl-expand .bl-box {
+		height: 130px;
+	}
+
+	.bl-content > ul li {
+		width: 40%;
+	}
+}
+	</style>
+    
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+<div class="container">	
+			<div id="bl-main" class="bl-main">
+				<section>
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-overview">Overview</h2>
+					</div>
+					<div class="bl-content">
+						<h2>About this project</h2>
+                        <h1>Background </h1>
+                            <p>SAR data/ imagery provides a number of advantages over traditional overhead imagery. SAR signals are synthetically emitted, and SAR data is generated based on the returning signal. Traditional overhead imagery, which depends on the light reflected off of the earth and atmosphere to create an image, cannot be taken at night, and there are also issues with clouds obscuring the images. The synthetic signals generated by SAR instruments can pass through clouds, so visuals are not obstructed by clouds and SAR data can be collected at night because it provides the source signal. </p>
+
+<p>One potential use case for SAR imagery is ship detection in open water. Often times when ships are engaged in illegal fishing, they will turn off their Automatic Identification System (AIS) to fish undetected in illegal areas. Ship detection using SAR imagery can identify these ships. </p>
+
+<p> SAR imagery is collected in four possible polarizations: VV, VH, HV, HH. We interpret the polarizations as "outgoing signal" "incoming signal". For example, VV is interpreted as vertical outgoing signal and vertical incoming signal and HV is interpreted as horizontal outgoing signal and vertical incoming signal. There is not a lot of research on which polarizations perform best in deep learning models. Therefore, our analysis includes testing for different polarizations and different combinations of polarizations. Co-polarization/ or combining different polarizations beforehand seems to lead to worse model performance and is abondoned early on in the research. For our results, we focus on the customized models trained for each type of polarization. As well as, a combined model capable of accepting any of the four polarizations as input. We compare and contrast between the model outputs. </p>
+
+                        <h1>Goal</h1> <p><span style='color:firebrick;font-weight:bold'>To expand on the work done in a previous GA-CCRi project using SAR data to detect ships. The previous implementation relied on CFAR for detection. We implement deep learning and computer vision methods to pursue the same problem in hopes of reaching improved results. Additionally, explore CycleGAN applications in order to create more data and visualize and understand SAR imagery features in a more human-friendly format </span></p>
+
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<section id="bl-work-section">
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-results">Results</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Results</h2>
+						<p>Click on an image to compare results on different tests sets below and view CycleGAN imagery.</p>
+						<ul id="bl-work-items">
+                            <li data-panel="panel-1"><a href="#"><img src="screenshots/sarship.jpg" /></a></li>
+							<li data-panel="panel-2"><a href="#"><img src="screenshots/xview3.jpg" style=" display: block;margin-left: auto;margin-right: auto;width: 100%; " /></a></li>
+							<li data-panel="panel-3"><a href="#"><img src="screenshots/copernicus.jpg" /></a></li>
+							<li data-panel="panel-4"><a href="#"><img src="screenshots/cycle.jpg" /></a></li>
+						</ul>
+					<h2>Conclusion</h2>
+                        <p id="table2">SAR is the up and coming mode of imagery and understanding it is critical to future applications of computer vision. Here we explored deep learning and how it can be used to detect ships in SAR imagery. Through implementing a novel modification to a well known Faster R-CNN neural network, we were able to more accurately detect ships present in SAR data. Furthermore, in addition to providing researchers with even more labeled data, exploring the application of Cycle GANs allows us to better understand certain ship features that result in brighter pixels within SAR imagery. </p>
+                        <p> The results are a clear indicator that the combined model capable of accepting all 4 polarizations and trained on data from all 4 polarizations had the best accuracy metrics.</p>
+                    					<h2>Impact</h2>
+                        <p ><span style='color:orange;font-weight:bold'>Improved GA-CCRi SAR ship detection tools and added a novel CycleGAN tool that can provide more labeled data and more interpertability to the deep learning architecture released. </span></p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<section>
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-model">Model</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Model Specifications</h2>
+		
+							<h1>Data</h1>
+							<p id="table">
+Training and validation data are obtained from the <a href="https://github.com/CAESAR-Radi/SAR-Ship-Dataset">SAR-Ship-Dataset</a> which contains (38760 labeled polarized images, 59535 total ship instances) from Sentinel-1 and GAO satellites. The dataset contains images with a 3 meter, 6 meter and 5 meter GSD. Most test data is downloaded directly from <a href="https://scihub.copernicus.eu/dhus/#/home">Copernicus</a> and includes Sentinel-1 images preprocessed using some of Erin Ryan's work while at GA-CCRi (Imaging and AIS).  </p>
+				
+						<article>
+							<h3>Sample images from the dataset</h3>
+							<p>Example image chips are included for better visualization of differences in polarizations and SAR imagery properties</p>
+<!-- Slideshow container -->
+                        <div class="slideshow-container">
+
+                          <!-- Full-width images with number and caption text -->
+                          <div class="mySlides fade">
+                            <div class="numbertext">1 / 8</div>
+                            <img src="screenshots/gaovv.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;">
+                            <div class="text">GAO Satelitte VV Pol.</div>
+                          </div>
+
+                          <div class="mySlides fade">
+                            <div class="numbertext">2 / 8</div>
+                            <img src="screenshots/gaovh.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;">
+                            <div class="text">GAO Satelitte VH Pol.</div>
+                          </div>
+
+                          <div class="mySlides fade">
+                            <div class="numbertext">3 / 8</div>
+                            <img src="screenshots/gaohh.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;">
+                            <div class="text">GAO Satelitte HH Pol.</div>
+                          </div>
+                              <div class="mySlides fade">
+                            <div class="numbertext">4 / 8</div>
+                            <img src="screenshots/gaohv.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;">
+                            <div class="text">GAO Satelitte HV Pol.</div>
+                          </div>
+
+                          <div class="mySlides fade">
+                            <div class="numbertext">5 / 8</div>
+                            <img src="screenshots/senvh.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;">
+                            <div class="text">SEN Satelitte VH Pol.</div>
+                          </div>
+
+                          <div class="mySlides fade">
+                            <div class="numbertext">6 / 8</div>
+                            <img src="screenshots/senvv.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;">
+                            <div class="text">SEN Satelitte VV Pol.</div>
+                          </div>
+                              <div class="mySlides fade">
+                            <div class="numbertext">7 / 8</div>
+                            <img src="screenshots/senhh.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;">
+                            <div class="text">SEN Satelitte HH Pol.</div>
+                          </div>
+
+                          <div class="mySlides fade">
+                            <div class="numbertext">8 / 8</div>
+                            <img src="screenshots/senhv.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;">
+                            <div class="text">SEN Satelitte HV Pol.</div>
+                          </div>
+
+                          <!-- Next and previous buttons -->
+                          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        </div>
+                        <br>
+
+                        <!-- The dots/circles -->
+                        <div style="text-align:center">
+                          <span class="dot" onclick="currentSlide(1)"></span>
+                          <span class="dot" onclick="currentSlide(2)"></span>
+                          <span class="dot" onclick="currentSlide(3)"></span>
+                              <span class="dot" onclick="currentSlide(4)"></span>
+                          <span class="dot" onclick="currentSlide(5)"></span>
+                          <span class="dot" onclick="currentSlide(6)"></span>
+                              <span class="dot" onclick="currentSlide(7)"></span>
+                          <span class="dot" onclick="currentSlide(8)"></span>
+                        </div>
+						</article>
+						<article>
+							<h3>Model Architecture</h3>
+							<p> The Model used is a Faster R-CNN model using a resnet50 backbone. The model predicted both bounding boxes and class scores. The model was implemented using Pytorch.<img src="screenshots/modelconv.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;"></p>
+						</article>
+
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<section>
+					<div class="bl-box">
+						<h2 class="bl-icon bl-icon-try">Try it out</h2>
+					</div>
+					<div class="bl-content">
+                        <h2><span style='color:black;font-weight:bold'>Test out the object detection model below </span></h2>
+                        <p><span style='color:black'>The object detection model has been deployed via flask and heroku, a set of test images has been provided that will run the model in realtime and return the predictions. Please press on any of the buttons below to test the functionality.</span></p>
+                        
+
+
+
+                    <form method="post">
+                        <button id="button_1" value="1" name="but1">button 1</button>
+                        <button id="button_2" value="2" name="but2">button 2</button>
+
+                    </form>
+
+                    <!-- the result of the search will be rendered inside this div -->
+                    <div id="result"><img id="myimage" img style='display:block; width:256px;height:256px;' src=""></div>
+
+                        <!--Deployed my app onto heroku but weights were too large to get on github so predictions were completely incorrect  -->
+
+
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<!-- Panel items for the works -->
+				<div class="bl-panel-items" id="bl-panel-work-items">
+					<div data-panel="panel-1">
+						<div>
+							
+							<h3>SAR Ship Test Dataset</h3>
+							<p>The following test dataset was part of the originally retreived SAR-Ship Dataset. This set has ground truth values which can be seen in the right most image. Only true boats are showin in green. The outputs from the different models are also shown. The CFAR model is the baseline model already implemented at GA-CCRi, the combined model is the model that can accept any of the four polarizations as input and is trained on all the data, finally, the VV model is the model trained on only VV imagery. These test images were of the VV polarization. It is clear that the combined model is the most accurate as the VV model has two additional false positives. CFAR is by far the worst. </p>
+                            <div class="results"> <img src="screenshots/cfarship1.jpg" ><br />CFAR </div>
+                            <div class="results"> <img src="screenshots/allship1.png"  ><br />Combined Model</div>
+                            <div class="results"> <img src="screenshots/vvship1.png"  ><br />VV Model</div>
+                            <div class="results"> <img src="screenshots/groundship1.png"  ><br />Ground Truth</div>
+                            <h1></h1>
+                            <div class="results"> <img src="screenshots/cfarship2.jpg" ><br />CFAR </div>
+                            <div class="results"> <img src="screenshots/allship2.png"  ><br />Combined Model</div>
+                            <div class="results"> <img src="screenshots/vvship2.png"  ><br />VV Model</div>
+                            <div class="results"> <img src="screenshots/groundship2.png"  ><br />Ground Truth</div>
+                            
+						</div>
+					</div>
+					<div data-panel="panel-2">
+                        <div>
+							
+							<h3>XView 3</h3>
+							<p>The following test dataset was taken from the new XView competition which mainly featured SAR imagery with 10 meter GSD . This set has ground truth values which can be seen in the right most image, non-ships are either in red or not highlighted, ships are seen in green. The outputs from the different models are also shown. The CFAR model is the baseline model already implemented at GA-CCRi, the combined model is the model that can accept any of the four polarizations as input and is trained on all the data, finally, the VV model is the model trained on only VV imagery. These test images were of the VV polarization. It is clear that the combined model is the most accurate here again. CFAR is by far the worst. </p>
+                            <div class="results"> <img src="screenshots/cfarxview2.png" ><br />CFAR </div>
+                            <div class="results"> <img src="screenshots/allxview2.png"  ><br />Combined Model</div>
+                            <div class="results"> <img src="screenshots/vvxview2.png"  ><br />VV Model</div>
+                            <div class="results"> <img src="screenshots/groundxview2.png"  ><br />Ground Truth</div>
+                            <div class="results"> <img src="screenshots/cfarxview1.png" ><br />CFAR </div>
+                            <div class="results"> <img src="screenshots/vhxview1.png"  ><br />Combined Model</div>
+                            <div class="results"> <img src="screenshots/allxview1.png"  ><br />VV Model</div>
+                            <div class="results"> <img src="screenshots/groundxview1.png"  ><br />Ground Truth</div>
+                            
+						</div>
+					</div>
+					<div data-panel="panel-3">
+						<div>
+							
+							<h3>Data Downloaded Directly from Sentinel</h3>
+							<p>The following test dataset was taken directly from Sentinel-1 live via Copernicus Hub. This set does not have ground truth values. Outputs from each model are shown The CFAR model is the baseline model already implemented at GA-CCRi, the combined model is the model that can accept any of the four polarizations as input and is trained on all the data, finally, the VV model is the model trained on only VV imagery. These test images were of the VV polarization. It is not clear here which performs best without proper authentication through AIS data.</p>
+                            <div class="results"> <img src="screenshots/cfarcop1.png" ><br />CFAR </div>
+                            <div class="results"> <img src="screenshots/allcop1.png"  ><br />Combined Model</div>
+                            <div class="results"> <img src="screenshots/vvcop1.png"  ><br />VV Model</div>
+                            <h1></h1>
+                            <div class="results"> <img src="screenshots/cfarcop2.png" ><br />CFAR </div>
+                            <div class="results"> <img src="screenshots/allcop2.png"  ><br />Combined Model</div>
+                            <div class="results"> <img src="screenshots/vvcop2.png"  ><br />VV Model</div>
+                        
+						</div>
+					</div>
+					<div data-panel="panel-4">
+						<div>
+							
+							<h3>CycleGAN Results</h3>
+							<p>Below you will find the results of a CycleGAN trained to predict what an optical image would look like if it was SAR. Exploring this method allows us to understand how certain features in an optical image change in radar imagery. These predicted SAR images were ran through the combined model and the results are also added to the end to show that this method is worth further exploration in the future.</p>
+                            <div class="results"> <img src="screenshots/cycle1.png" ><br />Example 1 </div>
+                            <div class="results"> <img src="screenshots/cycle3.png"  ><br />Example 2</div>
+                            <h1></h1>
+                            <div class="results"> <img src="screenshots/cycle2.png" ><br />Prediction on Example 1 </div>
+                            <div class="results"> <img src="screenshots/cycle4.png"  ><br />Prediction on Example 2</div>
+
+						</div>
+					</div>
+					<nav>
+						<span class="bl-next-work">&gt; Next Result</span>
+						<span class="bl-icon bl-icon-close"></span>
+					</nav>
+				</div>
+			</div>
+		</div><!-- /container -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/boxlayout.js"></script>
+		<script>
+            
+            var Boxlayout = (function() {
+
+	var $el = $( '#bl-main' ),
+		$sections = $el.children( 'section' ),
+		// works section
+		$sectionWork = $( '#bl-work-section' ),
+		// work items
+		$workItems = $( '#bl-work-items > li' ),
+		// work panels
+		$workPanelsContainer = $( '#bl-panel-work-items' ),
+		$workPanels = $workPanelsContainer.children( 'div' ),
+		totalWorkPanels = $workPanels.length,
+		// navigating the work panels
+		$nextWorkItem = $workPanelsContainer.find( 'nav > span.bl-next-work' ),
+		// if currently navigating the work items
+		isAnimating = false,
+		// close work panel trigger
+		$closeWorkItem = $workPanelsContainer.find( 'nav > span.bl-icon-close' ),
+		transEndEventNames = {
+			'WebkitTransition' : 'webkitTransitionEnd',
+			'MozTransition' : 'transitionend',
+			'OTransition' : 'oTransitionEnd',
+			'msTransition' : 'MSTransitionEnd',
+			'transition' : 'transitionend'
+		},
+		// transition end event name
+		transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+		// support css transitions
+		supportTransitions = Modernizr.csstransitions;
+
+	function init() {
+		initEvents();
+	}
+
+	function initEvents() {
+		
+		$sections.each( function() {
+			
+			var $section = $( this );
+
+			// expand the clicked section and scale down the others
+			$section.on( 'click', function() {
+
+				if( !$section.data( 'open' ) ) {
+					$section.data( 'open', true ).addClass( 'bl-expand bl-expand-top' );
+					$el.addClass( 'bl-expand-item' );	
+				}
+
+			} ).find( 'span.bl-icon-close' ).on( 'click', function() {
+				
+				// close the expanded section and scale up the others
+				$section.data( 'open', false ).removeClass( 'bl-expand' ).on( transEndEventName, function( event ) {
+					if( !$( event.target ).is( 'section' ) ) return false;
+					$( this ).off( transEndEventName ).removeClass( 'bl-expand-top' );
+				} );
+
+				if( !supportTransitions ) {
+					$section.removeClass( 'bl-expand-top' );
+				}
+
+				$el.removeClass( 'bl-expand-item' );
+				
+				return false;
+
+			} );
+
+		} );
+
+		// clicking on a work item: the current section scales down and the respective work panel slides up
+		$workItems.on( 'click', function( event ) {
+
+			// scale down main section
+			$sectionWork.addClass( 'bl-scale-down' );
+
+			// show panel for this work item
+			$workPanelsContainer.addClass( 'bl-panel-items-show' );
+
+			var $panel = $workPanelsContainer.find("[data-panel='" + $( this ).data( 'panel' ) + "']");
+			currentWorkPanel = $panel.index();
+			$panel.addClass( 'bl-show-work' );
+
+			return false;
+
+		} );
+
+		// navigating the work items: current work panel scales down and the next work panel slides up
+		$nextWorkItem.on( 'click', function( event ) {
+			
+			if( isAnimating ) {
+				return false;
+			}
+			isAnimating = true;
+
+			var $currentPanel = $workPanels.eq( currentWorkPanel );
+			currentWorkPanel = currentWorkPanel < totalWorkPanels - 1 ? currentWorkPanel + 1 : 0;
+			var $nextPanel = $workPanels.eq( currentWorkPanel );
+
+			$currentPanel.removeClass( 'bl-show-work' ).addClass( 'bl-hide-current-work' ).on( transEndEventName, function( event ) {
+				if( !$( event.target ).is( 'div' ) ) return false;
+				$( this ).off( transEndEventName ).removeClass( 'bl-hide-current-work' );
+				isAnimating = false;
+			} );
+
+			if( !supportTransitions ) {
+				$currentPanel.removeClass( 'bl-hide-current-work' );
+				isAnimating = false;
+			}
+			
+			$nextPanel.addClass( 'bl-show-work' );
+
+			return false;
+
+		} );
+
+		// clicking the work panels close button: the current work panel slides down and the section scales up again
+		$closeWorkItem.on( 'click', function( event ) {
+
+			// scale up main section
+			$sectionWork.removeClass( 'bl-scale-down' );
+			$workPanelsContainer.removeClass( 'bl-panel-items-show' );
+			$workPanels.eq( currentWorkPanel ).removeClass( 'bl-show-work' );
+			
+			return false;
+
+		} );
+
+	}
+
+	return { init : init };
+
+})();
+            
+			$(function() {
+				Boxlayout.init();
+			});
+            
+    var data = [
+  { "Polarization" : 'HH', "Image Count" : 17648 },
+  { "Polarization" : 'HV', "Image Count" : 14713 },
+{ "Polarization" : 'VH', "Image Count" : 3764 },
+{ "Polarization" : 'VV', "Image Count" : 2635 }
+]
+    
+        var data2 = [
+  { "Polarization": "VH", "Split Model TP" : 1017, "Split Model FN" : 1368, "Combined Model TP": 1109, "Combined Model FN": 1298 },
+{ "Polarization": "VV", "Split Model TP" : 1332, "Split Model FN" : 1056, "Combined Model TP": 1494, "Combined Model FN": 929 }
+]
+		
+function tabulate(data, columns, criteria) {
+	var table = d3.select(criteria).append('table')
+	var thead = table.append('thead')
+	var	tbody = table.append('tbody');
+
+	// append the header row
+	thead.append('tr')
+	  .selectAll('th')
+	  .data(columns).enter()
+	  .append('th')
+	    .text(function (column) { return column; });
+
+	// create a row for each object in the data
+	var rows = tbody.selectAll('tr')
+	  .data(data)
+	  .enter()
+	  .append('tr');
+
+	// create a cell in each row for each column
+	var cells = rows.selectAll('td')
+	  .data(function (row) {
+	    return columns.map(function (column) {
+	      return {column: column, value: row[column]};
+	    });
+	  })
+	  .enter()
+	  .append('td')
+	    .text(function (d) { return d.value; });
+
+  return table;
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}         
+// render the tables
+tabulate(data, ['Polarization', 'Image Count'],'#table'); // 2 column table
+tabulate(data2, ['Polarization', 'Split Model TP', 'Split Model FN','Combined Model TP','Combined Model FN'],'#table2'); // 4 column table
+
+$("button").click(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "https://ship-object.herokuapp.com/get_images",
+        data: { 
+            nm: $(this).attr("value")
+        },
+        success: function(result) {
+            document.getElementById('myimage').src= 'data:image/jpg;base64,' + result['image'] + '#' + new Date().getTime();
+        },
+        error: function(result) {
+            alert('error');
+        }
+    });
+});            
+
+                      
+		</script>
+	</body>
+</html>
