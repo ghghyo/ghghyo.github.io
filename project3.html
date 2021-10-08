@@ -448,6 +448,21 @@ section.bl-expand .bl-icon-close {
 	-moz-transition: opacity 0.3s linear 0.5s;
 	transition: opacity 0.3s linear 0.5s;
 }
+
+/* Style the button and place it in the middle of the container/image */
+.btn {
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: black;
+}
 	/* 
 	Generic Styling, for Desktops/Laptops 
 	*/
@@ -745,13 +760,23 @@ Training and validation data are obtained from the <a href="https://github.com/C
 
 
                     <form method="post">
-                        <button id="button_1" value="1" name="but1">button 1</button>
-                        <button id="button_2" value="2" name="but2">button 2</button>
+                   
+                         <img src="/screenshots/newship1.jpg" alt="Snow">
+                        <img src="/screenshots/newship2.jpg" alt="Snow">
+                        <img src="/screenshots/newship3.jpg" alt="Snow">
+                        <h2></h2>
+                        <button class="btn" id="button_1" value="0" name="but1">Run Model on Image 1</button>
+                       
+                            <button class="btn" id="button_2" value="1" name="but2">Run Model on Image 2</button>
+                            
+                            <button class="btn" id="button_3" value="2" name="but3">Run Model on Image 3</button>
+                       
 
                     </form>
 
                     <!-- the result of the search will be rendered inside this div -->
-                    <div id="result"><img id="myimage" img style='display:block; width:256px;height:256px;' src=""></div>
+                        <h2></h2>
+                    <div id="result"><img id="myimage" img style='display:block; width:px;height:px;' src="screenshots/loading.jpg"></div>
 
                         <!--Deployed my app onto heroku but weights were too large to get on github so predictions were completely incorrect  -->
 
