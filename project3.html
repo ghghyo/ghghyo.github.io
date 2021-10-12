@@ -774,7 +774,7 @@ Training and validation data are obtained from the <a href="https://github.com/C
                             <button class="btn" id="button_3" value="2" name="but3">Run Model on Image 3</button>
                             <input id="inp" type='file' style="background-color: #555;color: white;font-size: 12px;padding: 12px 24px;border: none;cursor: pointer;border-radius: 5px;margin:15px;">
                     
-
+                            <p id="loading" style="color:black; font-weight: 1000"></p>
                     </form>
 
                     <!-- the result of the search will be rendered inside this div -->
@@ -1075,6 +1075,7 @@ tabulate(data2, ['Polarization', 'Split Model TP', 'Split Model FN','Combined Mo
 
 $("button").click(function(e) {
     e.preventDefault();
+    document.getElementById("loading").innerHTML="*If No Error Pops Up Then The Model Is Loading Please Do NOT Press Any Buttons*";
     $.ajax({
         type: "POST",
         url: "https://ship-object.herokuapp.com/get_images",
@@ -1083,6 +1084,7 @@ $("button").click(function(e) {
         },
         success: function(result) {
             document.getElementById('myimage').src= 'data:image/jpg;base64,' + result['image'] + '#' + new Date().getTime();
+            document.getElementById("loading").innerHTML="Done";
         },
         error: function(result) {
             alert('error');
@@ -1098,6 +1100,7 @@ function readFile() {
     
     FR.addEventListener("load", function(e) {
     e.preventDefault();
+    document.getElementById("loading").innerHTML="*If No Error Pops Up Then The Model Is Loading Please Do NOT Press Any Buttons*";
     $.ajax({
         type: "POST",
         url: "https://ship-object.herokuapp.com/get_uploaded",
@@ -1106,6 +1109,7 @@ function readFile() {
         },
         success: function(result) {
             document.getElementById('myimage').src= 'data:image/jpg;base64,' + result['image'] + '#' + new Date().getTime();
+            document.getElementById("loading").innerHTML="Done"
         },
         error: function(result) {
             alert('error');
