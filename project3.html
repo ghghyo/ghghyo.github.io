@@ -458,6 +458,7 @@ section.bl-expand .bl-icon-close {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+    margin:20px;
 }
 
 .btn:hover {
@@ -754,8 +755,9 @@ Training and validation data are obtained from the <a href="https://github.com/C
 					</div>
 					<div class="bl-content">
                         <h2><span style='color:black;font-weight:bold'>Test out the object detection model below </span></h2>
-                        <p><span style='color:black'>The object detection model has been deployed via flask and heroku, a set of test images has been provided that will run the model in realtime and return the predictions. Please press on any of the buttons below to test the functionality.</span></p>
+                        <p><span style='color:black'>The object detection model has been deployed via flask and heroku, a set of test images has been provided that will run the model in realtime and return the predictions. Please press on any of the buttons below to test the functionality. Additionally, if you have any SAR ship data you can choose the image and the model will run on it.</span></p>
                         
+ 
 
 
 
@@ -770,7 +772,8 @@ Training and validation data are obtained from the <a href="https://github.com/C
                             <button class="btn" id="button_2" value="1" name="but2">Run Model on Image 2</button>
                             
                             <button class="btn" id="button_3" value="2" name="but3">Run Model on Image 3</button>
-                       
+                            <input id="inp" type='file' style="background-color: #555;color: white;font-size: 12px;padding: 12px 24px;border: none;cursor: pointer;border-radius: 5px;margin:15px;">
+                    
 
                     </form>
 
@@ -778,7 +781,7 @@ Training and validation data are obtained from the <a href="https://github.com/C
                         <h2></h2>
                     <div id="result"><img id="myimage" img style='display:block; width:px;height:px;' src="screenshots/loading.jpg"></div>
 
-                        <!--Deployed my app onto heroku but weights were too large to get on github so predictions were completely incorrect  -->
+                        <!--Deployed my app onto heroku but weights were too large to get on github so predictions were completely incorrect, currently working on accepting image as input flask is ready to accept base64 data just need to send it correctly using ajax -->
 
 
 					</div>
@@ -1087,6 +1090,35 @@ $("button").click(function(e) {
     });
 });            
 
+function readFile() {
+  
+  if (this.files && this.files[0]) {
+    
+    var FR= new FileReader();
+    
+    FR.addEventListener("load", function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "https://ship-object.herokuapp.com/get_uploaded",
+        data: { 
+            nm: e.target.result
+        },
+        success: function(result) {
+            document.getElementById('myimage').src= 'data:image/jpg;base64,' + result['image'] + '#' + new Date().getTime();
+        },
+        error: function(result) {
+            alert('error');
+        }
+    });
+    }); 
+    
+    FR.readAsDataURL( this.files[0] );
+  }
+  
+}
+
+document.getElementById("inp").addEventListener("change", readFile);
                       
 		</script>
 	</body>
