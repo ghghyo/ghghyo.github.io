@@ -20,7 +20,7 @@
 		margin: 0;
 		margin-top: 0.5em;
 		font-style: italic;
-		letter-spacing:-7px;
+		letter-spacing:-14px;
 	}
 	h4 {
 		padding: 0;
@@ -71,13 +71,16 @@
 	}
     .logo {
       background-image: url(screenshots/drone.png);
-      background-repeat: no-repeat;
+      background-repeat:no-repeat;
       background-size: contain;
       padding: 0px;
-      margin: 30px;
+      margin: 0px;
       width: 1000px;
       height: 150px;
-      background-position-x: center;
+      background-position: center;
+        display: block;
+     text-indent: -150px;
+     
       
     }
     .loader {
@@ -125,7 +128,7 @@ function waitforme(milisec) {
 }
  
 async function movex() {
-    for (let i = 29; i < 50; ++i) {
+    for (let i = 19; i <42 ; ++i) {
         circle.style.backgroundPositionX=i+"em";
             await waitforme(40)
         console.log(i);
@@ -135,7 +138,7 @@ async function movex() {
 }
  
 
-movex();
+ movex();
 // creates a pretty entrance for our three icons. gsap is simple enough
 gsap.from(".icon", {
   duration: 2,
@@ -182,7 +185,9 @@ $( '.icon' ).click(function(e){
 })
 
 */
-
+$(document).ready(function() {
+    $('.logo').css('background-size', $(window).width()/13 + 'px ' + $(window).height()/6 + 'px');
+});
 
 </script>
 
