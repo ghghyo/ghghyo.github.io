@@ -77,8 +77,6 @@
       margin: 0px;
       width: 1000px;
       height: 150px;
-      background-position: center;
-        display: block;
      text-indent: -150px;
      
       
@@ -120,7 +118,7 @@
 
 gsap.from(".logo", {duration: 0.8, x: 300, opacity: 0, scale: 0.5});
 var circle = document.querySelector(".logo");
-        
+ circle.style.backgroundPositionY=-1+"em";       
 function waitforme(milisec) {
     return new Promise(resolve => {
         setTimeout(() => { resolve('') }, milisec);
