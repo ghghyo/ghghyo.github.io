@@ -123,7 +123,7 @@ a {
 }
 
 .st-panel{
-	background: #fff;
+	background: #787A91;
 	overflow: hidden;
 } 
 
@@ -177,14 +177,14 @@ a {
 [data-icon]:after {
     content: attr(data-icon);
     font-family: 'FontAwesome';
-    color: #fff;
+    color: #787A91;
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 	position: absolute;
 	width: 200px;
 	height: 200px;
 	line-height: 200px;
 	text-align: center;
-	font-size: 5vw;
+	font-size: 100px;
 	top: 50%;
 	left: 50%;
 	margin: -100px 0 0 -100px;
@@ -196,7 +196,7 @@ a {
 }
 
 .st-panel h2 {
-	color: #787A91;
+	color: #fff;
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 	position: absolute;
 	font-size: 3vw;
@@ -281,7 +281,7 @@ a {
 	text-align: left;
 	font-size: 1vw;
 	line-height: 22px;
-	color: #8b8b8b;
+	color: #fff;
 	z-index: 2;
 	padding: 0;
 	width: 50%;
@@ -360,21 +360,20 @@ a {
 
 .st-color,
 .st-deco{
-	background: #787A91;
+	background: #fff;
 }
 .st-color [data-icon]:after {
 	color: #141E61;
 }
 .st-color .st-deco {
-	background: #fff;
+	background: #787A91;
 }
 .st-color h2 {
-	color: #fff;
+	color: #787A91;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 } 
 .st-color p {
-	color: #fff;
-	color: rgba(255,255,255,0.8);
+	color: #787A91;
 }
 
 @media screen and (max-width: 520px) {
@@ -416,6 +415,7 @@ a {
     
     
     </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -426,7 +426,7 @@ a {
 				<input type="radio" name="radio-set" checked="checked" id="st-control-1"/>
 				<a href="#st-panel-1" style="text-decoration: none;">Overview</a>
 				<input type="radio" name="radio-set" id="st-control-2"/>
-				<a href="#st-panel-2" style="text-decoration: none;">Improvements</a>
+				<a href="#st-panel-2" style="text-decoration: none;">Timeline</a>
 				<input type="radio" name="radio-set" id="st-control-3"/>
 				<a href="#st-panel-3" style="text-decoration: none;">Additions</a>
 				<input type="radio" name="radio-set" id="st-control-4"/>
@@ -440,13 +440,21 @@ a {
 					<section class="st-panel" id="st-panel-1">
             <div class="st-deco" data-icon="&#xf022;"></div>
 						<h2>Overview</h2>
-						<p>overview of the project</p>
+						<p>Change detection capabilities are highly sought after by government and non-government entities. Tools that can automatically process satellite imagery and temporally compare the change that has happened in a given region open up a plethora of possibilities. GA-CCRi is interested in setting up its very own change detection algorithm that can reflect when industrialization happens and detect other geographical changes that occur in regions around the world. Through the use of computer vision and deep learning this alogrithm can result in a very robust tool for GA-CCRi. </p>
+                        <h2 style= "top: 35%;"> Model</h2>
+                        <p style= "top:43%;">In order to create the most beneficial tool, supervised and self-supervised methods were explored by GA-CCRi analysts. Under the supervised methods, different network architectures were identified and trained on EarthNet2021 and EuroSAT data. Triplet loss was added to the architecture in order to pursue self-supervised methods. Overall, the tool was capable of detecting landscape changes on LandSAT imagery boasting a 30 meter ground sampling distance as seen in the example below. </p>
+                        <h2 style="top:55%"> Goal</h2>
+                        <p style="top:61%"> Use high resolution Maxar imagery to perform more accurate and specific change detection as a secondary step.</p>
+                        <div class="maxar" style="width: 50%; height:200px"><img src="screenshots/maxar1.png" style="width: 100%;position:relative;right: -15vw; top: 23vw"></div>
 					</section>
 					
 					<section class="st-panel st-color" id="st-panel-2">
 						<div class="st-deco" data-icon="&#xf0ad;"></div>
-						<h2>Improvements</h2>
-						<p>old capabilities and whats new</p>
+						<h2>Timeline</h2>
+                        <div class="timeline1" style="width: 50%; height:200px"><img src="screenshots/timeline1.png" style="width: 100%;position:relative;right: -15vw; top: 10vw"></div>
+                        <div class="timeline2" style="width: 50%; height:200px"><img src="screenshots/timeline2.png" style="width: 50%;position:relative;right: -9vw; top: -8vw"></div>
+                        <div class="timeline3" style="width: 50%; height:200px"><img src="screenshots/timeline3.png" style="width: 50%;position:relative;right: -30vw; top: -2vw"></div>
+                        <div class="timeline4" style="width: 50%; height:200px"><img src="screenshots/timeline3.png" style="width: 50%;position:relative;right: -45vw; top: -32vw"></div>
 					</section>
 					
 					<section class="st-panel" id="st-panel-3">
@@ -468,6 +476,17 @@ a {
 			
 </div>
 <!-- partial -->
-  
+<script>
+    gsap.from(".maxar", {
+  duration: 5,
+  scale: 0.5, 
+  opacity: 0, 
+  delay: 0.5, 
+  stagger: 0.2,
+  ease: "elastic", 
+  force3D: true
+}); 
+    
+    </script>
 </body>
 </html>
