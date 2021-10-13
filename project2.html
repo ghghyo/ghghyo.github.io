@@ -442,7 +442,7 @@ a {
 						<h2>Overview</h2>
 						<p>Change detection capabilities are highly sought after by government and non-government entities. Tools that can automatically process satellite imagery and temporally compare the change that has happened in a given region open up a plethora of possibilities. GA-CCRi is interested in setting up its very own change detection algorithm that can reflect when industrialization happens and detect other geographical changes that occur in regions around the world. Through the use of computer vision and deep learning this alogrithm can result in a very robust tool for GA-CCRi. </p>
                         <h2 style= "top: 35%;"> Model</h2>
-                        <p style= "top:43%;">In order to create the most beneficial tool, supervised and self-supervised methods were explored by GA-CCRi analysts. Under the supervised methods, different network architectures were identified and trained on EarthNet2021 and EuroSAT data. Triplet loss was added to the architecture in order to pursue self-supervised methods. Overall, the tool was capable of detecting landscape changes on LandSAT imagery boasting a 30 meter ground sampling distance as seen in the example below. </p>
+                        <p style= "top:43%;">In order to create the most beneficial tool, supervised and self-supervised methods were explored by GA-CCRi analysts. Under the supervised methods, different network architectures were identified and trained on EarthNet2021 and EuroSAT data. Triplet loss was added to the architecture in order to pursue self-supervised methods. Overall, the tool was capable of detecting landscape changes on LandSAT imagery boasting a 30 meter ground sampling distance as seen in tghhe example below. </p>
                         <h2 style="top:55%"> Goal</h2>
                         <p style="top:61%"> Use high resolution Maxar imagery to perform more accurate and specific change detection as a secondary step.</p>
                         <div class="maxar" style="width: 50%; height:200px"><img src="screenshots/maxar1.png" style="width: 100%;position:relative;right: -15vw; top: 23vw"></div>
@@ -451,10 +451,10 @@ a {
 					<section class="st-panel st-color" id="st-panel-2">
 						<div class="st-deco" data-icon="&#xf0ad;"></div>
 						<h2>Timeline</h2>
-                        <div class="timeline1" style="width: 40%; height:200px"><img src="screenshots/timeline1.png" style="width: 100%;position:relative;right: -15vw; top: 10vw"></div>
-                        <div class="timeline2" style="width: 40%; height:200px"><img src="screenshots/timeline2.png" style="width: 50%;position:relative;right: -9vw; top: -8vw"></div>
-                        <div class="timeline3" style="width: 40%; height:200px"><img src="screenshots/timeline3.png" style="width: 50%;position:relative;right: -30vw; top: -2vw"></div>
-                        <div class="timeline4" style="width: 40%; height:200px"><img src="screenshots/timeline3.png" style="width: 50%;position:relative;right: -45vw; top: -32vw"></div>
+                        <div class="timeline1" style="width: 50%; height:200px"><img src="screenshots/timeline1.png" style="width: 100%;position:relative;right: -15vw; top: 10vw"></div>
+                        <div class="timeline2" style="width: 50%; height:200px"><img src="screenshots/timeline2.png" style="width: 40%;position:relative;right: -9vw; top: -8vw"></div>
+                        <div class="timeline3" style="width: 50%; height:200px"><img src="screenshots/timeline3.png" style="width: 40%;position:relative;right: -30vw; top: -2vw"></div>
+                        <div class="timeline4" style="width: 50%; height:200px"><img src="screenshots/timeline4.png" style="width: 40%;position:relative;right: -45vw; top: -30vw"></div>
 					</section>
 					
 					<section class="st-panel" id="st-panel-3">
@@ -487,6 +487,14 @@ a {
   force3D: true
 }); 
     
+const button = document.getElementById('st-control-2');
+button.addEventListener('click', event => {var tl = gsap.timeline({ defaults: {duration: 10, ease: "elastic"} } );
+tl.fromTo(".timeline1", {opacity:0}, {opacity: 1, duration: 1, ease: "elastic", rotation:-360})
+   .fromTo(".timeline2", {opacity:0}, {opacity: 1, duration: 1, ease: "elastic", rotation:-360})//child tweens will inherit the duration and from the parent timeline!
+.fromTo(".timeline3", {opacity:0}, {opacity: 1, duration: 1, ease: "elastic", rotation:-360})
+    .fromTo(".timeline4", {opacity:0}, {opacity: 1, duration: 1, ease: "elastic", rotation:-360});
+}, {once : true});
+
     </script>
 </body>
 </html>
