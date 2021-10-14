@@ -7,6 +7,8 @@
 <style>
  html, body {margin: 0; height: 100%; overflow: hidden}   
     import url('//fonts.googleapis.com/css?family=Josefin+Slab:400,700');
+    import url(https://fonts.googleapis.com/css?family=Righteous);
+    
 
 a {
   text-decoration: none;
@@ -209,6 +211,7 @@ a {
 	padding: 0;
 	top: 10%;
 	-webkit-backface-visibility: hidden;
+    
 }
 
 #st-control-1:checked ~ .st-scroll #st-panel-1 h2,
@@ -544,7 +547,14 @@ The most impressive additon provided to GA-CCRi was a road and building detector
 					<section class="st-panel st-color" id="st-panel-4">
 						<div class="st-deco" data-icon="&#xf023;"></div>
 						<h2>Future Work</h2>
-						<p>where we left the project.</p>
+						<p style="top:20%;color:black;text-align: center;font-size: 50px;  display: inline-block;
+  font-family: 'Righteous', serif;
+  text-shadow: .03em .03em 0 hsla(230,40%,50%,1);">Retrain and automate.</p>
+                        <p style="top:30%;text-align: inherit;"> One of the first things that needs to be done is retraining. After acquiring a high resolution dataset, the road and building detectors can be retrained to more accurately predict where buildings and roads are in images of different ground sampling distances. Since most of the data will be retrieved from MAXAR, it is important to include a large set of 30 cm per pixel imagery. Additionally, this tool can be automated to work on live imagery quickly comparing change over several different time periods succesfully predicting where urbanization is occuring.</p>
+                        <p style="top:50%;color:black;text-align: center;font-size: 50px;  display: inline-block;
+  font-family: 'Righteous', serif;
+  text-shadow: .03em .03em 0 hsla(230,40%,50%,1);">New Data.</p>
+                        <p style="top:60%; text-align: inherit"> Different data sources like well known text with latitude and longtitude values for where roads already exist on a map can be used to make the model more robust and as a validation metric during training.</p>
 					</section>
 
 
