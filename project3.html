@@ -633,7 +633,7 @@ section.bl-expand .bl-icon-close {
 
 <p> SAR imagery is collected in four possible polarizations: VV, VH, HV, HH. We interpret the polarizations as "outgoing signal" "incoming signal". For example, VV is interpreted as vertical outgoing signal and vertical incoming signal and HV is interpreted as horizontal outgoing signal and vertical incoming signal. There is not a lot of research on which polarizations perform best in deep learning models. Therefore, our analysis includes testing for different polarizations and different combinations of polarizations. Co-polarization/ or combining different polarizations beforehand seems to lead to worse model performance and is abondoned early on in the research. For our results, we focus on the customized models trained for each type of polarization. As well as, a combined model capable of accepting any of the four polarizations as input. We compare and contrast between the model outputs. </p>
 
-                        <h1>Goal</h1> <p><span style='color:firebrick;font-weight:bold'>To expand on the work done in a previous GA-CCRi project using SAR data to detect ships. The previous implementation relied on CFAR for detection. We implement deep learning and computer vision methods to pursue the same problem in hopes of reaching improved results. Additionally, explore CycleGAN applications in order to create more data and visualize and understand SAR imagery features in a more human-friendly format </span></p>
+                        <h1>Goal</h1> <p><span style='color:firebrick;font-weight:bold'>To expand on the work done in a previous GA-CCRi project using SAR data to detect ships. The previous implementation relied on CFAR for detection. We implement deep learning and computer vision methods to pursue the same problem in hopes of reaching improved results. Additionally, we explore CycleGAN applications in order to create more labeled data and visualize and understand SAR imagery features.</span></p>
 
 					</div>
 					<span class="bl-icon bl-icon-close"></span>
@@ -667,11 +667,12 @@ section.bl-expand .bl-icon-close {
 						<h2>Model Specifications</h2>
 		
 							<h1>Data</h1>
-							<p id="table">
-Training and validation data are obtained from the <a href="https://github.com/CAESAR-Radi/SAR-Ship-Dataset">SAR-Ship-Dataset</a> which contains (38760 labeled polarized images, 59535 total ship instances) from Sentinel-1 and GAO satellites. The dataset contains images with a 3 meter, 6 meter and 5 meter GSD. Most test data is downloaded directly from <a href="https://scihub.copernicus.eu/dhus/#/home">Copernicus</a> and includes Sentinel-1 images preprocessed using some of Erin Ryan's work while at GA-CCRi (Imaging and AIS).  </p>
+							<p>
+Training and validation data are obtained from the <a href="https://github.com/CAESAR-Radi/SAR-Ship-Dataset">SAR-Ship-Dataset</a> which contains (38760 labeled polarized images, 59535 total ship instances) from Sentinel-1 and GAO satellites. The dataset contains images with a 3 meter, 6 meter and 5 meter GSD. Most test data is downloaded directly from <a href="https://scihub.copernicus.eu/dhus/#/home">Copernicus</a> and includes Sentinel-1 images preprocessed using some of Erin Ryan's work while at GA-CCRi (Imaging and AIS). The cyclegan is trained on the same SAR dataset and the following <a href="https://www.kaggle.com/rhammell/ships-in-satellite-imagery?select=shipsnet"> optical imagery dataset</a></p>
+                        <p id="table"></p>
 				
 						<article>
-							<h3>Sample images from the dataset</h3>
+							<h3>Sample images from the SAR dataset</h3>
 							<p>Example image chips are included for better visualization of differences in polarizations and SAR imagery properties</p>
 <!-- Slideshow container -->
                         <div class="slideshow-container">
@@ -743,7 +744,7 @@ Training and validation data are obtained from the <a href="https://github.com/C
 						</article>
 						<article>
 							<h3>Model Architecture</h3>
-							<p> The Model used is a Faster R-CNN model using a resnet50 backbone. The model predicted both bounding boxes and class scores. The model was implemented using Pytorch.<img src="screenshots/modelconv.png" style=" display: block;margin-left: auto;margin-right: auto;width: 40%;"></p>
+							<p> The Model used is a Faster R-CNN model using a resnet50 backbone. The winning model was built to have 4 different initial conv layers that depended on the polarization of the input image. The rest of the architecture remained the same. The model predicted both bounding boxes and class scores. The model was implemented using Pytorch.<img src="screenshots/modelconv.png" style=" display: block;margin-left: auto;margin-right: auto;width: 1000px;"></p>
 						</article>
 
 					</div>
@@ -1078,7 +1079,7 @@ $("button").click(function(e) {
     document.getElementById("loading").innerHTML="*If No Error Pops Up Then The Model Is Loading Please Do NOT Press Any Buttons*";
     $.ajax({
         type: "POST",
-        url: "https://ship-object.herokuapp.com/get_images",
+        url: "http://127.0.0.1:5000/get_images",
         data: { 
             nm: $(this).attr("value")
         },
@@ -1103,7 +1104,7 @@ function readFile() {
     document.getElementById("loading").innerHTML="*If No Error Pops Up Then The Model Is Loading Please Do NOT Press Any Buttons*";
     $.ajax({
         type: "POST",
-        url: "https://ship-object.herokuapp.com/get_uploaded",
+        url: "http://127.0.0.1:5000/get_uploaded",
         data: { 
             nm: e.target.result
         },
