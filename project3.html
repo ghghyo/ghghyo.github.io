@@ -1079,7 +1079,7 @@ $("button").click(function(e) {
     document.getElementById("loading").innerHTML="*If No Error Pops Up Then The Model Is Loading Please Do NOT Press Any Buttons*";
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/get_images",
+        url: "https://ship-object.herokuapp.com/get_images",
         data: { 
             nm: $(this).attr("value")
         },
@@ -1104,7 +1104,7 @@ function readFile() {
     document.getElementById("loading").innerHTML="*If No Error Pops Up Then The Model Is Loading Please Do NOT Press Any Buttons*";
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/get_uploaded",
+        url: "https://ship-object.herokuapp.com/get_uploaded",
         data: { 
             nm: e.target.result
         },
