@@ -379,10 +379,7 @@ a {
 	color: #787A91;
 }
 
-    .maxar img{
-        height: auto; width: 950px;position:relative; right: -300px; top: 440px
-            
-    }
+
     .timeline1{
         width: 100px;
         height:200px
@@ -411,12 +408,7 @@ a {
     .timeline4 img{
         width: 400px;position:relative;right: -650px; top: -540px
     }
-        .map img{
-        width: 400px;height:290px;position:relative;right: -550px; top: 60px
-    }
-    .road img{
-        width:800px; height:310px; position: relative;right: -350px;top:160px
-    }
+
 @media screen and (max-width: 800px) {
 	.st-panel h2 {
 		font-size: 4vw;
@@ -444,9 +436,6 @@ a {
     		font-size: 40px;
     }
 
-    .maxar img{
-        width: 400px;position:absolute; right:10px; top: 330px
-    }
         .timeline1 img{
         width: 400px;position:relative;right: -10px; top: 200px
     }
@@ -459,13 +448,7 @@ a {
       .timeline4 img{
         width: 200px;position:relative;right: -220px; top: -480px
     }
-            .map img{
-        width: 200px;height:150px;position:relative;right: -140px; top: 100px
-    }
-    .road img{
-       
-        width:330px; height:160px; position: relative;right: -70px;top:170px
-    }
+
 }
 @media screen and (max-width: 360px) {
 	.st-container > a {
@@ -520,8 +503,8 @@ a {
                         <h2 style= "top: 35%;"> Model</h2>
                         <p style= "top:43%;">In order to create the most beneficial tool, supervised and self-supervised methods were explored by GA-CCRi analysts. Under the supervised methods, different network architectures were identified and trained on EarthNet2021 and EuroSAT data. Triplet loss was added to the architecture in order to pursue self-supervised methods. Overall, the tool was capable of detecting landscape changes on LandSAT imagery boasting a 30 meter ground sampling distance as seen in the example below. </p>
                         <h2 style="top:55%"> Our Goal</h2>
-                        <p style="top:61%"> Use high resolution Maxar imagery to perform more accurate and specific change detection as a secondary step.</p>
-                        <div class="maxar"><img src="screenshots/maxar1.png"></div>
+                        <p style="top:61%" > Use high resolution Maxar imagery to perform more accurate and specific change detection as a secondary step.<img src="screenshots/maxar1.png" style="height: auto; width: 50vw;position:relative;"></p>
+                        
 					</section>
 					
 					<section class="st-panel st-color" id="st-panel-2">
@@ -536,12 +519,12 @@ a {
 					<section class="st-panel" id="st-panel-3">
 						<div class="st-deco" data-icon="&#xf005;"></div>
 						<h2 style="top:5%;">Whats New</h2>
-                        <p style="top:15%;">One of the very pertinent things we did for this project is improve upon the GA-CCRi tool by modifying it to accept inputs from any satellite and detect change in images that were not prealigned with eachother. The tool that was already available was too limiting because it could only accept LandSat imagery as input and the images had to be orthorectified and aligned prior to their use. This is unrealistic given the fact that most satellite imagery is captured off-NADIR or at an angle. </p>
-                        <div class="map"><img src="screenshots/qgiswithwkt.png"><p style="top:35%;color: antiquewhite">*Outputs include lat/lon values</p><p style="top:38%;color: antiquewhite">  that can be overlaid atop of a </p><p style="top:41%;color: antiquewhite">map. Every color is for a </p><p style="top:44%;color: antiquewhite"> different road class*</p></div>
+                        <p style="top:15%;">One of the very pertinent things we did for this project is improve upon the GA-CCRi tool by modifying it to accept inputs from any satellite and detect change in images that were not prealigned with eachother. The tool that was already available was too limiting because it could only accept LandSat imagery as input and the images had to be orthorectified and aligned prior to their use. This is unrealistic given the fact that most satellite imagery is captured off-NADIR or at an angle.</p> <p style="top:25%;color:#787A91">ssssssssssssssssssssssssssssssssssssssssss<img src="screenshots/qgiswithwkt.png" style="height: 15.5vw; width: 25vw;position:relative;"> </p>
+                        <p style="top:35%;color: antiquewhite">*Outputs include lat/lon values </p><p style="top:38%;color: antiquewhite">  that can be overlaid atop of a </p><p style="top:41%;color: antiquewhite">map. Every color is for a </p><p style="top:44%;color: antiquewhite"> different road class*</p>
                         <p style="top:55%">
 The most impressive additon provided to GA-CCRi was a road and building detector. These road and building detectors are state of the art. For example, the road detector is an ensemble of 4 different Unets and 4 different Resnet models. Unfortunately, the detectors didnt give optimal performance since they werent trained on a large high-res dataset. If properly trained, the performance will significantly increase.
-</p>
-                        <div class="road"><img src="screenshots/road.png"></div>
+<img src="screenshots/road.png" style="height: 17vw; width: 45vw;position:relative;"></p>
+                    
 					</section>
 					
 					<section class="st-panel st-color" id="st-panel-4">
