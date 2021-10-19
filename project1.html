@@ -15,7 +15,7 @@
         <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link type="text/css" rel="stylesheet" href="resources/sheet.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 	</head>
     <style>
         <div class="selection" style="position: absolute; background-color: rgb(14, 101, 235); opacity: 0.1; top: 84px; left: 101px; width: 1515px; height: 152px;">&nbsp;</div>
@@ -731,6 +731,24 @@ body {
     border: 1px solid #ccc;
   }
 }
+        
+.char{
+    font-size: 40px;
+    height: 40px;
+    animation: an 3s ease-out 1 both;
+    display: inline-block;
+}
+
+@keyframes an{
+    from{
+        opacity: 0;
+        transform: perspective(500px) translate3d(-35px, -40px, -150px) rotate3d(1, -1, 0, 35deg);
+    }
+    to{
+        opacity: 1;
+        transform: perspective(500px) translate3d(0, 0, 0);
+    }
+}
 
 </style>
 	<body>
@@ -741,35 +759,35 @@ body {
 						<h2 class="bl-icon bl-icon-about">Intro</h2>
 					</div>
            			<div class="bl-content">
-						<h2>Introduction</h2>
-						<p>
+						<h2 class="char">Introduction</h2>
+						<p class="char">
                             Image classification is used on overhead imagery to detect specific objects such as planes, cars and buildings. Creating and training effective deep learning image classification models is dependent on the proper tuning of model hyper-parameters, along with appropriate image preprocessing and standardization. </p>
                         <article>
-							<h3>Big Questions</h3>
-							<ol>
-                                <p>What is the difference in model performance between models trained on 16-bit images and models trained on images converted to 8-bit?</p>
-                                <p>How should images pixel values be standardized?</p>
-                                <p>Should standardization be based on only a collection of local or global pixel intensities?</p>
+							<h3 class="char">Big Questions</h3>
+							<ol >
+                                <p class="char">What is the difference in model performance between models trained on 16-bit images and models trained on images converted to 8-bit?</p>
+                                <p class="char">How should images pixel values be standardized?</p><br>
+                                <p class="char">Should standardization be based on only a collection of local or global pixel intensities?</p>
                             </ol>
 						</article>
 						<article>
-							<h3>16 bit vs 8 bit Imagery</h3>
-                            <p>Within an image, digital information is stored in pixels as intensities or tones. An 8-bit image can hold 256 different intensities within a single image channel; a standard color image has 3 channels - red, green and blue (RGB). Thus, each pixel in a standard RGB image consumes 24 bits of information. In all, <bold>RGB 8 bit</bold> images can hold up to <bold>16.7 Million</bold> different values. <bold>16 Bit images</bold>, on the other hand can hold 65,536 pixel intensities in a single channel, resulting in <bold>28 Billion</bold> possible values. This is a significant difference, several orders of magnitude larger, and has implications in how this data is processed.</p>
-                            <p>
-                                <center><figure>
+							<h3 class="char">16 bit vs 8 bit Imagery</h3>
+                            <p class="char">Within an image, digital information is stored in pixels as intensities or tones. An 8-bit image can hold 256 different intensities within a single image channel; a standard color image has 3 channels - red, green and blue (RGB). Thus, each pixel in a standard RGB image consumes 24 bits of information. In all, <bold>RGB 8 bit</bold> images can hold up to <bold>16.7 Million</bold> different values. <bold>16 Bit images</bold>, on the other hand can hold 65,536 pixel intensities in a single channel, resulting in <bold>28 Billion</bold> possible values. This is a significant difference, several orders of magnitude larger, and has implications in how this data is processed.</p>
+                            <p class="char">
+                                <center><figure >
                                     <img src="screenshots/16bit.jpeg" width="400" height="400" />
                                     <img src="screenshots/8bit.jpg" width="400" height="400"/>
                                     <figcaption><b>Figure 1: On the left is an example 16 bit satelite image on the right is an image that was 16 bit, but has been converted to 8 bit.</b></figcaption>
                                     </figure></center></p>
                             
 						</article>
-						<article>
+						<article >
 							<h3>Challenges</h3>
-							<p>In addition to being 16-bit, satellite imagery is huge, generally on the order of tens of thousands of pixels in width and height. All images used in this blogpost are derived from the <a href="https://www.cosmiqworks.org/rareplanes/">Rareplanes Dataset</a> which includes panchromatic (single channel) imagery of different airports with over ten thousand labeled planes. To train an image classification model, we needed to "chip" the full images into smaller tiles that could then be converted and standardized to be fed into a model.</p>
+							<p class="char">In addition to being 16-bit, satellite imagery is huge, generally on the order of tens of thousands of pixels in width and height. All images used in this blogpost are derived from the <a href="https://www.cosmiqworks.org/rareplanes/">Rareplanes Dataset</a> which includes panchromatic (single channel) imagery of different airports with over ten thousand labeled planes. To train an image classification model, we needed to "chip" the full images into smaller tiles that could then be converted and standardized to be fed into a model.</p>
 						</article>
 						<p>
-							<a href="file:///home/ssamuel/FullscreenLayoutPageTransitions-master/project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
-							<a><strong>Home Page</strong></a>
+							<a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
 					</div>
 					<span class="bl-icon bl-icon-close"></span>
@@ -779,10 +797,10 @@ body {
 						<h2 class="bl-icon bl-icon-works">Data Preparation</h2>
 					</div>
 					<div class="bl-content">
-						<h2>Data Preparation</h2>
+						<h2 class="char">Data Preparation</h2><br>
             
-                        <p><a>Data Generation: The Chipping Process</a>
-                            <p>Using the metadata associated with each satellite image, we located the centroid of each labeled plane within each image. We then used those coordinates to create 512 x 512 chips around each plane using gdal to create our "positive" chips. "Negative" chip generation conversely used those coordinates to exclude planes entirely and only chip non-plane areas. In generating the negative chips, it is important to include as wide a variety of non-plane data as possible, to help reduce the number of false positive detections of the model. We generated one thousand 512 x 512 negative chips per positive chip.</p>
+                        <p class="char"><a>Data Generation: The Chipping Process</a>
+                            <p class="char">Using the metadata associated with each satellite image, we located the centroid of each labeled plane within each image. We then used those coordinates to create 512 x 512 chips around each plane using gdal to create our "positive" chips. "Negative" chip generation conversely used those coordinates to exclude planes entirely and only chip non-plane areas. In generating the negative chips, it is important to include as wide a variety of non-plane data as possible, to help reduce the number of false positive detections of the model. We generated one thousand 512 x 512 negative chips per positive chip.</p><br><br><br>
                         <div class='div3' align= 'center'>
                             <div class = 'box' align='center'>
                             <img src="screenshots/16bit.jpeg" />
@@ -790,7 +808,7 @@ body {
                         </div>
                         <p>We trained an airplane detector on the Rareplanes dataset using five different image standardization methods, two using 16-bit imagery, and three using 16-bit converted to 8-bit imagery. The following cards display the normalization methods used for each case. </p>
                         <article>
-                        <h3>Cases</h3>
+                        <h3 class="char">Cases</h3>
                         <p>Hover over the image below to see normalization methods:</p>
                         </article>
                         <div2>
@@ -873,8 +891,8 @@ body {
                         
                         
                         <p>
-							<a href="file:///home/ssamuel/FullscreenLayoutPageTransitions-master/project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
-							<a><strong>Home Page</strong></a>
+							<a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
 					</div>
 					<span class="bl-icon bl-icon-close"></span>
@@ -885,16 +903,16 @@ body {
 						<h2 class="bl-icon bl-icon-blog">Model</h2>
 					</div>
 					<div class="bl-content">
-						<h2>Model</h2>
-                        <p>We trained an airplane detector on the Rareplanes dataset using five different image standardization methods, two using 16-bit imagery, and three using 16-bit converted to 8-bit imagery. The following cards display the normalization methods used for each case. </p>
+						<h2 class = "char">Model</h2>
+                        <p class = "char">We trained an airplane detector on the Rareplanes dataset using five different image standardization methods, two using 16-bit imagery, and three using 16-bit converted to 8-bit imagery. The following cards display the normalization methods used for each case. </p>
                         <article>
-                        <h3>Training</h3>
-                            <p>The model utilized a <a href='https://arxiv.org/pdf/1512.03385.pdf'>ResNet50</a> Architecture modified to accept single color imagery as input. The dataset included 187 total satellite images which were used to generate 10901 positive chips and 180000 negative chips, all of 256*256 dimensions. Each case was then trained from scratch for 60 iterations with a 70/30 train/val random split created for robust training. Every case has the same train and val set. However, different data augmentation functions such as horizontal and vertical shifts, horizontal and vertical flips, random rotations, blurs, and crops were randomly applied throughout.</p> 
+                        <h3 class = "char">Training</h3>
+                            <p class = "char">The model utilized a <a href='https://arxiv.org/pdf/1512.03385.pdf'>ResNet50</a> Architecture modified to accept single color imagery as input. The dataset included 187 total satellite images which were used to generate 10901 positive chips and 180000 negative chips, all of 256*256 dimensions. Each case was then trained from scratch for 60 iterations with a 70/30 train/val random split created for robust training. Every case has the same train and val set. However, different data augmentation functions such as horizontal and vertical shifts, horizontal and vertical flips, random rotations, blurs, and crops were randomly applied throughout.</p> 
                         </article>
                         
                         <article>
-                        <h3>Validation</h3>
-                            <p>In this step we performed an Initial evaluation of the model on validation data. This analysis determined the appropriate threshold a predicted probability must exceed in order to be classified as a positive. The goal was to minimize the number of false positive and false negative predictions. We use the metrics below to inform which thresholds were selected for each model.</p>
+                        <h3 class = "char">Validation</h3>
+                            <p class = "char">In this step we performed an Initial evaluation of the model on validation data. This analysis determined the appropriate threshold a predicted probability must exceed in order to be classified as a positive. The goal was to minimize the number of false positive and false negative predictions. We use the metrics below to inform which thresholds were selected for each model.</p>
                             
                             <ul>
                                 <p><li>True Positives</li></p>
@@ -915,6 +933,7 @@ body {
 
 						<article>
                             <h3>Demo</h3>
+                            <p class = "char"> Note: this demo will not work without a local host</p>
                                 <div class="topnav">
                                   <div class="search-container">
                                      <form action = "http://localhost:5000/" method = "post">
@@ -936,8 +955,8 @@ body {
                         </article>
                         
                         <p>
-							<a href="file:///home/ssamuel/FullscreenLayoutPageTransitions-master/project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
-							<a href="#"><strong>Home Page</strong></a>
+							<a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
 					</div>
 					<span class="bl-icon bl-icon-close"></span>
@@ -948,12 +967,12 @@ body {
 						<h2 class="bl-icon bl-icon-contact">Results</h2>
 					</div>
 					<div class="bl-content">
-						<h2>Testing Methods</h2>
-						<p>1. Test on 512*512 chips and return one classification that details whether ANY plane exists in chip or no planes exist at all. (Does not count number of planes) </p>
-                        <p>2. Test on full size satellite image or 15000*15000 chips of that image (whichever is smaller). Counts how many planes exist and returns visualization with plane locations highlighted. </p>
+						<h2 class = "char">Testing Methods</h2>
+						<p class = "char">1. Test on 512*512 chips and return one classification that details whether ANY plane exists in chip or no planes exist at all. (Does not count number of planes) </p>
+                        <p class = "char">2. Test on full size satellite image or 15000*15000 chips of that image (whichever is smaller). Counts how many planes exist and returns visualization with plane locations highlighted. </p>
                         
-                        <h2> Results Table: </h2>
-                          <table>
+                        <h2 class = "char"> Results Table: </h2>
+                          <table >
                              <tr bgcolor='darkblue'><b>
                                 <th></th>
                                 <th></th>
@@ -1068,14 +1087,14 @@ body {
                              </tr>
 
                           </table>
-                        <h2>Test Method 2 Example Result Image:</h2>
+                        <h2 class = "char">Test Method 2 Example Result Image:</h2>
                         <figure align='center'>
                             <img src="screenshots/TestMethod2.png" align='center' />
                             <figcaption>This figure is an example output for test method 2. Detections over the estaablished threshold for each case display as read heatmap like detections. This image was normalized using Case 1 techniques with a detection threshold of 0.55.</figcaption>
                         </figure>
                         <p>
-							<a href="file:///home/ssamuel/FullscreenLayoutPageTransitions-master/project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
-							<a href="#"><strong>Home Page</strong></a>
+							<a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
                          
 					</div>
@@ -1089,14 +1108,15 @@ body {
 						<h2></h2>
 						<p> </p>
 						<p>
-							<a href="file:///home/ssamuel/FullscreenLayoutPageTransitions-master/project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
-							<a href="#"><strong>Home Page</strong></a>
+							<a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
 					</div>
 					<span class="bl-icon bl-icon-close"></span>
                 </section>
 				
 				<!-- Panel items for the works -->
+<!--
 				<div class="bl-panel-items" id="bl-panel-work-items">
 					<div data-panel="panel-1">
 						<div>
@@ -1132,6 +1152,7 @@ body {
                         
 					</nav>
 				</div>
+-->
 			</div>
 		</div><!-- /container -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
