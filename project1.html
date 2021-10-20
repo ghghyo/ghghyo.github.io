@@ -563,17 +563,12 @@ section.bl-expand .bl-icon-close {
 	}
 }
 .box {
-  background-image: url("16bit_dim.jpeg");
   animation: spotlight 20s;
   animation-iteration-count: infinite;
+    align-content: center;
+  
 }
-.dot1{
-  animation: circle 2s infinite;
-  background: red;
-  height: 8px;
-  width: 8px;
-position: absolute
-    }
+
 
 @keyframes circle {
   0% { clip-path: inset(0% 0% 0% 0% round 0%); }
@@ -581,13 +576,18 @@ position: absolute
 }
 @keyframes spotlight {
   0% { clip-path: inset(20% 20% 20% 20% round 0%); }
-  20% { clip-path: inset(41% 47% 43% 45% round 0%); }
-  40% { clip-path: inset(68% 56% 15% 36% round 0%);}
-  60% { clip-path: inset(8% 33% 74% 58% round 0%); }
-  80% { clip-path: inset(21% 49% 63% 43% round 0%); }
-  100% { clip-path: inset(76% 52% 8% 40% round 0%); }
+  20% { clip-path: inset(41% 45% 43% 42% round 0%); }
+  40% { clip-path: inset(44% 65% 40% 21% round 0%);}
+  60% { clip-path: inset(8% 22% 78% 65% round 0%); }
+  80% { clip-path: inset(21% 49% 66% 38% round 0%); }
+  100% { clip-path: inset(76% 54% 8% 33% round 0%); }
 }
-        
+ img {
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    align-items: center;
+    }       
         
 .flip-card {
   background-color: transparent;
@@ -634,25 +634,37 @@ position: absolute
 div2{
         position: center;
         display:flex;
+        flex-wrap: wrap;
         margin-right: 50px;
         margin-right: 50px;
     }
 .div3{ 
     
-    background-image: url("screenshots/16bit_dim.jpeg");
+/*    background-image: url("screenshots/16bit_dim.jpeg");*/
     background-repeat: no-repeat;
     background-position: center;
+    height:auto;
+    width: auto;
+    overflow-x: scroll;
         }
         
         
- table, th, td {
+ table {
     border: 0.5px solid white;
     margin-left: auto;
     margin-right: auto;
     width: 1000px;
     height: 50px;
     text-align: center;
+    overflow-x: scroll;
  }
+        
+th, td {    border: 0.5px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    height: 50px;
+    text-align: center;}
 figcaption { display: table-row; caption-side: bottom ; }
         
 * {box-sizing: border-box;}
@@ -749,6 +761,19 @@ body {
         transform: perspective(500px) translate3d(0, 0, 0);
     }
 }
+.container {
+/*height: 100%;*/
+overflow-x: scroll;    
+/*white-space: nowrap;*/
+width: 100%;
+height: auto;
+}
+/*
+.container::-webkit-scrollbar{
+    display: none;
+}
+*/
+
 
 </style>
 	<body>
@@ -756,10 +781,13 @@ body {
 			<div id="bl-main" class="bl-main">
 				<section>
 					<div class="bl-box">
-						<h2 class="bl-icon bl-icon-about">Intro</h2>
+						<h2 class="bl-icon">Intro</h2>
 					</div>
            			<div class="bl-content">
-						<h2 class="char">Introduction</h2>
+                            <a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="index.html"><strong>Home Page</strong></a>
+                        <article>
+						<h2 class="char">Introduction</h2></article>
 						<p class="char">
                             Image classification is used on overhead imagery to detect specific objects such as planes, cars and buildings. Creating and training effective deep learning image classification models is dependent on the proper tuning of model hyper-parameters, along with appropriate image preprocessing and standardization. </p>
                         <article>
@@ -790,27 +818,35 @@ body {
 							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
 					</div>
-					<span class="bl-icon bl-icon-close"></span>
+					<span class="bl-icon"></span>
 				</section>
 				<section id="bl-work-section">
 					<div class="bl-box">
-						<h2 class="bl-icon bl-icon-works">Data Preparation</h2>
+						<h2 class="bl-icon">Data Preparation</h2>
 					</div>
 					<div class="bl-content">
-						<h2 class="char">Data Preparation</h2><br>
+                            <a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="index.html"><strong>Home Page</strong></a>
+                        
+                        <article>
+						<h2 class="char">Data Preparation</h2></article><br>
             
                         <p class="char"><a>Data Generation: The Chipping Process</a>
-                            <p class="char">Using the metadata associated with each satellite image, we located the centroid of each labeled plane within each image. We then used those coordinates to create 512 x 512 chips around each plane using gdal to create our "positive" chips. "Negative" chip generation conversely used those coordinates to exclude planes entirely and only chip non-plane areas. In generating the negative chips, it is important to include as wide a variety of non-plane data as possible, to help reduce the number of false positive detections of the model. We generated one thousand 512 x 512 negative chips per positive chip.</p><br><br><br>
-                        <div class='div3' align= 'center'>
-                            <div class = 'box' align='center'>
-                            <img src="screenshots/16bit.jpeg" />
-                        </div>
-                        </div>
+                            <p class="char">Using the metadata associated with each satellite image, we located the centroid of each labeled plane within each image. We then used those coordinates to create 512 x 512 chips around each plane using gdal to create our "positive" chips. "Negative" chip generation conversely used those coordinates to exclude planes entirely and only chip non-plane areas. In generating the negative chips, it is important to include as wide a variety of non-plane data as possible, to help reduce the number of false positive detections of the model. We generated one thousand 512 x 512 negative chips per positive chip.</p>
+                        <p>
+                            <div id="under"   align='center' style="position: absolute; margin-left: auto; margin-right: auto;left:0; right: 0; text-align: center;"><img src="screenshots/16bit_dim.jpeg"  /></div>
+                            <div id="top"   style="position: absolute; margin-left: auto; margin-right: auto;left:0; right: 0; text-align: center;" align='center'><img class= 'box' src="screenshots/16bit.jpeg"/></div>
+                        </p>
+                    
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                         <p>We trained an airplane detector on the Rareplanes dataset using five different image standardization methods, two using 16-bit imagery, and three using 16-bit converted to 8-bit imagery. The following cards display the normalization methods used for each case. </p>
+                        
                         <article>
                         <h3 class="char">Cases</h3>
                         <p>Hover over the image below to see normalization methods:</p>
                         </article>
+                        
+                        <div>
                         <div2>
                             <div class="flip-card" align= 'center'>
                               <div class="flip-card-inner" align= 'center'>
@@ -827,7 +863,7 @@ body {
                               </div>
                             </div>
 
-                                <div class="flip-card" align= 'center'>
+                                <div class="flip-card">
                               <div class="flip-card-inner" align= 'center'>
                                 <div class="flip-card-front" align= 'center'>
                                     <h1>Case 2</h1>
@@ -842,7 +878,7 @@ body {
                               </div>
                             </div>
 
-                                <div class="flip-card" align= 'center'>
+                                <div class="flip-card" >
                               <div class="flip-card-inner" align= 'center'>
                                 <div class="flip-card-front" align= 'center'>
                                     <h1>Case 3</h1>
@@ -857,7 +893,7 @@ body {
                               </div>
                             </div>
 
-                                <div class="flip-card" align= 'center'>
+                                <div class="flip-card">
                               <div class="flip-card-inner" align= 'center'>
                                 <div class="flip-card-front" align= 'center'>
                                     <h1>Case 4</h1>
@@ -872,7 +908,7 @@ body {
                               </div>
                             </div>
 
-                                <div class="flip-card" align= 'center'>
+                                <div class="flip-card" >
                               <div class="flip-card-inner" align= 'center'>
                                 <div class="flip-card-front" align= 'center'>
                                     <h1>Case 5</h1>
@@ -887,7 +923,7 @@ body {
                               </div>
                             </div>
                         </div2>
-                        
+                        </div>
                         
                         
                         <p>
@@ -895,16 +931,19 @@ body {
 							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
 					</div>
-					<span class="bl-icon bl-icon-close"></span>
+					<span class="bl-icon"></span>
 
 				</section>
 				<section>
 					<div class="bl-box">
-						<h2 class="bl-icon bl-icon-blog">Model</h2>
+						<h2 class="bl-icon">Model</h2>
 					</div>
 					<div class="bl-content">
+                            <a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="index.html"><strong>Home Page</strong></a>
+                        <article>
 						<h2 class = "char">Model</h2>
-                        <p class = "char">We trained an airplane detector on the Rareplanes dataset using five different image standardization methods, two using 16-bit imagery, and three using 16-bit converted to 8-bit imagery. The following cards display the normalization methods used for each case. </p>
+                        <p class = "char">We trained an airplane detector on the Rareplanes dataset using five different image standardization methods, two using 16-bit imagery, and three using 16-bit converted to 8-bit imagery. The following cards display the normalization methods used for each case. </p></article>
                         <article>
                         <h3 class = "char">Training</h3>
                             <p class = "char">The model utilized a <a href='https://arxiv.org/pdf/1512.03385.pdf'>ResNet50</a> Architecture modified to accept single color imagery as input. The dataset included 187 total satellite images which were used to generate 10901 positive chips and 180000 negative chips, all of 256*256 dimensions. Each case was then trained from scratch for 60 iterations with a 70/30 train/val random split created for robust training. Every case has the same train and val set. However, different data augmentation functions such as horizontal and vertical shifts, horizontal and vertical flips, random rotations, blurs, and crops were randomly applied throughout.</p> 
@@ -933,7 +972,7 @@ body {
 
 						<article>
                             <h3>Demo</h3>
-                            <p class = "char"> Note: this demo will not work without a local host</p>
+                            <p class = "char"> Note: This demo will not work without Flask running on a local host</p>
                                 <div class="topnav">
                                   <div class="search-container">
                                      <form action = "http://localhost:5000/" method = "post">
@@ -959,20 +998,26 @@ body {
 							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
 					</div>
-					<span class="bl-icon bl-icon-close"></span>
+					<span class="bl-icon"></span>
 
 				</section>
 				<section>
 					<div class="bl-box">
-						<h2 class="bl-icon bl-icon-contact">Results</h2>
+						<h2 class="bl-icon">Results</h2>
 					</div>
 					<div class="bl-content">
+                            <a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
+							<a href="index.html"><strong>Home Page</strong></a>
+                        <article>
 						<h2 class = "char">Testing Methods</h2>
 						<p class = "char">1. Test on 512*512 chips and return one classification that details whether ANY plane exists in chip or no planes exist at all. (Does not count number of planes) </p>
                         <p class = "char">2. Test on full size satellite image or 15000*15000 chips of that image (whichever is smaller). Counts how many planes exist and returns visualization with plane locations highlighted. </p>
-                        
+                        </article>
+                        <article>
                         <h2 class = "char"> Results Table: </h2>
-                          <table >
+                        </article>
+                        <div class = 'container'>
+                          <table>
                              <tr bgcolor='darkblue'><b>
                                 <th></th>
                                 <th></th>
@@ -1085,20 +1130,24 @@ body {
                                 <td >0.114</td>
                                 <td >0.188</td>
                              </tr>
-
                           </table>
+                        </div>
+                        <article>
                         <h2 class = "char">Test Method 2 Example Result Image:</h2>
+                        <div class= "container">
                         <figure align='center'>
                             <img src="screenshots/TestMethod2.png" align='center' />
                             <figcaption>This figure is an example output for test method 2. Detections over the estaablished threshold for each case display as read heatmap like detections. This image was normalized using Case 1 techniques with a detection threshold of 0.55.</figcaption>
                         </figure>
+                        </div>
+                        </article>
                         <p>
 							<a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
 							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
                          
 					</div>
-					<span class="bl-icon bl-icon-close"></span>
+					<span class="bl-icon "></span>
 				</section>
                 <section>
 					<div class="bl-box-title">
@@ -1112,7 +1161,7 @@ body {
 							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
 					</div>
-					<span class="bl-icon bl-icon-close"></span>
+					<span class="bl-icon"></span>
                 </section>
 				
 				<!-- Panel items for the works -->
