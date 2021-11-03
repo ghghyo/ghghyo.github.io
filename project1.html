@@ -820,6 +820,8 @@ height: auto;
 					</div>
 					<span class="bl-icon"></span>
 				</section>
+                
+                
 				<section id="bl-work-section">
 					<div class="bl-box">
 						<h2 class="bl-icon">Data Preparation</h2>
@@ -829,14 +831,21 @@ height: auto;
 							<a href="index.html"><strong>Home Page</strong></a>
                         
                         <article>
-						<h2 class="char">Data Preparation</h2></article><br>
+						  <h1 class="char">Data Preparation</h1>
+                        </article>
+                        
             
-                        <p class="char"><a>Data Generation: The Chipping Process</a>
-                            <p class="char">Using the metadata associated with each satellite image, we located the centroid of each labeled plane within each image. We then used those coordinates to create 512 x 512 chips around each plane using gdal to create our "positive" chips. "Negative" chip generation conversely used those coordinates to exclude planes entirely and only chip non-plane areas. In generating the negative chips, it is important to include as wide a variety of non-plane data as possible, to help reduce the number of false positive detections of the model. We generated one thousand 512 x 512 negative chips per positive chip.</p>
-                        <p>
-                            <div id="under"   align='center' style="position: absolute; margin-left: auto; margin-right: auto;left:0; right: 0; text-align: center;"><img src="screenshots/16bit_dim.jpeg"  /></div>
-                            <div id="top"   style="position: absolute; margin-left: auto; margin-right: auto;left:0; right: 0; text-align: center;" align='center'><img class= 'box' src="screenshots/16bit.jpeg"/></div>
-                        </p>
+                        <h2>Data Generation: The Chipping Process</h2>
+                            
+                                <p class="char">Using the metadata associated with each satellite image, we located the centroid of each labeled plane within each image. We then used those coordinates to create 512 x 512 chips around each plane using gdal to create our "positive" chips. "Negative" chip generation conversely used those coordinates to exclude planes entirely and only chip non-plane areas. In generating the negative chips, it is important to include as wide a variety of non-plane data as possible, to help reduce the number of false positive detections of the model. We generated one thousand 512 x 512 negative chips per positive chip.
+                                </p>
+                        <br><br><br><br>
+                        
+<!--                                <p>-->
+                                    <div id="under"   align='center' style="position: absolute; margin-left: auto; margin-right: auto;left:0; right: 0; text-align: center;"><img src="screenshots/16bit_dim.jpeg"  /></div>
+                                    <div id="top"   style="position: absolute; margin-left: auto; margin-right: auto;left:0; right: 0; text-align: center;" align='center'><img class= 'box' src="screenshots/16bit.jpeg"/></div>
+<!--                                </p>-->
+                
                     
                         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                         <p>We trained an airplane detector on the Rareplanes dataset using five different image standardization methods, two using 16-bit imagery, and three using 16-bit converted to 8-bit imagery. The following cards display the normalization methods used for each case. </p>
@@ -924,14 +933,14 @@ height: auto;
                             </div>
                         </div2>
                         </div>
-                        
+                
                         
                         <p>
 							<a href="project1.html"><strong>&laquo; Back to Project Overview</strong></a> |
 							<a href="index.html"><strong>Home Page</strong></a>
 						</p>
-					</div>
-					<span class="bl-icon"></span>
+            </div>
+            <span class="bl-icon"></span> 
 
 				</section>
 				<section>
@@ -972,18 +981,18 @@ height: auto;
 
 						<article>
                             <h3>Demo</h3>
-                            <p class = "char"> Note: This demo will not work without Flask running on a local host</p>
+<!--                            <p class = "char"> Note: This demo will not work without Flask running on a local host</p>-->
                                 <div class="topnav">
                                   <div class="search-container">
-                                     <form action = "http://localhost:5000/" method = "post">
-                                <!--      <input type="text" placeholder="Search" name="search">-->
-                                      <button type="submit" style="width: 350px; height: 100px;" align='center'>Detect!  <i class="fa fa-search"></i></button>
-                                    </form>
+<!--                                     <form action = "index.html" method = "post">-->
+                                <!--      <input type="text" placeholder="Search" name="search"> <i class="fa fa-search"></i>-->
+                                      <button onclick="myFunction()" style="width: 350px; height: 100px;" align='center'>Detect! </button>
+<!--                                    </form>-->
                                   </div>
                                 </div>
-
-                                <div style="padding-left:16px" align='center'>
-                                  <h2>Plane Detection</h2>
+                                <p id="demo"></p>
+                                <div id = "demo_plane" style="padding-left:16px" align='center'>
+                                  <h2 >Plane Detection</h2>
                                     <img src="screenshots/success/pos1.png" style="width:350px;height:350px; border: 5px solid grey">
                                     <img src="screenshots/success/neg1.png" style="width:350px;height:350px; border: 5px solid grey">
                                     <img src="screenshots/success/pos3.png" style="width:350px;height:350px; border: 5px solid grey">
@@ -991,6 +1000,27 @@ height: auto;
                                     <img src="screenshots/success/neg2.png" style="width:350px;height:350px; border: 5px solid grey">
                                     <img src="screenshots/success/pos2.png" style="width:350px;height:350px; border: 5px solid grey">
                                 </div>
+                            
+                               
+<!--           Normally you connect to a localhost, and run the model off the local machine, for the purposes of the demo I am automating the color switches so that it runs smoothly-- these are based on actual detections -->
+                            <script>
+                                    function wait(ms){
+                                       var start = new Date().getTime();
+                                       var end = start;
+                                       while(end < start + ms) {
+                                         end = new Date().getTime();
+                                      }
+                                    }
+                                    function myFunction() {
+                                        wait(4000);
+                                        document.getElementById("demo_plane").innerHTML = `<h2 > Plane Detection</h2>
+                                    <img src="screenshots/success/pos1.png" style="width:350px;height:350px; border: 5px solid green">
+                                    <img src="screenshots/success/neg1.png" style="width:350px;height:350px; border: 5px solid red">
+                                    <img src="screenshots/success/pos3.png" style="width:350px;height:350px; border: 5px solid red">
+                                    <img src="screenshots/success/neg3.png" style="width:350px;height:350px; border: 5px solid red">
+                                    <img src="screenshots/success/neg2.png" style="width:350px;height:350px; border: 5px solid red">
+                                    <img src="screenshots/success/pos2.png" style="width:350px;height:350px; border: 5px solid green">`;}
+                                </script>
                         </article>
                         
                         <p>
